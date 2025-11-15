@@ -315,6 +315,10 @@ IMPORTANT:
             field.setdefault("parts", None)
             field.setdefault("required", False)  # Default to False if not specified
         
+        # Remove internal metadata (_image_info) from schema - it's extracted separately
+        if "_image_info" in schema:
+            del schema["_image_info"]
+        
         # Note: Multi-part field merging is done later in analyze_form_pages
         # after page numbers are assigned
         
@@ -493,6 +497,10 @@ IMPORTANT:
                 logger.debug(f"Converting image from {image.mode} to RGB")
                 image = image.convert('RGB')
             
+            # Log image dimensions being sent to Gemini
+            original_width, original_height = image.size
+            logger.info(f"Image dimensions sent to Gemini: {original_width}x{original_height} pixels")
+            
             # Create prompt
             prompt = self._create_analysis_prompt()
             
@@ -515,6 +523,82 @@ IMPORTANT:
             # Remove any leading/trailing whitespace and newlines
             response_text = response_text.strip()
             
+            # Parse JSON to analyze bounding boxes and infer processed dimensions
+            try:
+                parsed_response = json.loads(response_text)
+                fields = parsed_response.get("fields", [])
+                
+                # Initialize max coordinates
+                max_x = max_y = 0
+                
+                if not fields:
+                    # No fields extracted, can't infer dimensions
+                    logger.warning("No fields in response, cannot infer processed dimensions")
+                    processed_width = original_width
+                    processed_height = original_height
+                else:
+                    # Find maximum bounding box coordinates to infer Gemini's processed image size
+                    for field in fields:
+                        if not isinstance(field, dict):
+                            continue
+                            
+                        bbox = field.get("bbox", [])
+                        if bbox and len(bbox) >= 4:
+                            max_x = max(max_x, bbox[2])  # x2 (right edge)
+                            max_y = max(max_y, bbox[3])  # y2 (bottom edge)
+                        
+                        # Check parts too
+                        parts = field.get("parts")
+                        if parts and isinstance(parts, list):
+                            for part in parts:
+                                if not isinstance(part, dict):
+                                    continue
+                                part_bbox = part.get("bbox", [])
+                                if part_bbox and len(part_bbox) >= 4:
+                                    max_x = max(max_x, part_bbox[2])
+                                    max_y = max(max_y, part_bbox[3])
+                    
+                    # Infer processed dimensions
+                    # If max coordinates are significantly less than original, Gemini likely resized
+                    if max_x > 0 and max_y > 0:
+                        # Add a small margin (5%) to account for fields near edges
+                        processed_width = int(max_x * 1.05)
+                        processed_height = int(max_y * 1.05)
+                        
+                        # If inferred size is very close to original, assume no resizing
+                        if abs(processed_width - original_width) < 50 and abs(processed_height - original_height) < 50:
+                            processed_width = original_width
+                            processed_height = original_height
+                            logger.debug(f"Bounding boxes match original dimensions - no resizing detected")
+                        else:
+                            logger.warning(
+                                f"Gemini likely processed image at different size! "
+                                f"Original: {original_width}x{original_height}, "
+                                f"Inferred processed: {processed_width}x{processed_height} "
+                                f"(based on max bbox: {max_x}x{max_y})"
+                            )
+                    else:
+                        processed_width = original_width
+                        processed_height = original_height
+                        logger.warning("Could not infer processed dimensions from bounding boxes, using original")
+                
+                # Store both original and processed dimensions in the response
+                parsed_response["_image_info"] = {
+                    "original_dimensions": {"width": original_width, "height": original_height},
+                    "processed_dimensions": {"width": processed_width, "height": processed_height},
+                    "max_bbox_coords": {"x": max_x, "y": max_y}
+                }
+                
+                # Re-serialize to JSON string
+                response_text = json.dumps(parsed_response, ensure_ascii=False)
+                
+            except json.JSONDecodeError:
+                # If JSON parsing fails here, continue with original response_text
+                # It will be parsed again later
+                logger.warning("Could not parse response to infer dimensions, will parse later")
+            except Exception as e:
+                logger.warning(f"Error inferring processed dimensions: {e}")
+            
             # If still wrapped in code blocks, try simple split
             if response_text.startswith("```"):
                 if "```json" in response_text:
@@ -530,8 +614,15 @@ IMPORTANT:
             try:
                 schema = json.loads(response_text)
                 
+                # Extract image info BEFORE post-processing (which removes it)
+                image_info = schema.get("_image_info", {})
+                
                 # Post-process and validate schema
                 schema = self._post_process_schema(schema)
+                
+                # Re-attach image info after post-processing
+                if image_info:
+                    schema["_image_info"] = image_info
                 
                 logger.info(f"Successfully extracted {len(schema.get('fields', []))} fields")
                 return schema
@@ -563,13 +654,44 @@ IMPORTANT:
         
         all_fields = []
         page_results = []  # Track success/failure per page
+        image_dimensions = {}  # Store image dimensions for coordinate scaling
         
         for i, image_path in enumerate(image_paths, start=1):
             logger.info(f"Processing page {i}/{len(image_paths)}: {image_path.name}")
             
             try:
+                # Load image to get dimensions before analysis
+                image = Image.open(image_path)
+                img_width, img_height = image.size
+                image_dimensions[f"page_{i}"] = {
+                    "width": img_width,
+                    "height": img_height
+                }
+                logger.debug(f"Page {i} image dimensions: {img_width}x{img_height}")
+                
                 page_schema = self.analyze_form_image(image_path)
                 fields = page_schema.get("fields", [])
+                
+                # Extract image info (processed dimensions) if available
+                image_info = page_schema.get("_image_info", {})
+                logger.debug(f"Page {i}: Extracted _image_info: {image_info}")
+                if image_info:
+                    processed_dims = image_info.get("processed_dimensions", {})
+                    original_dims = image_info.get("original_dimensions", {})
+                    logger.debug(f"Page {i}: processed_dims={processed_dims}, original_dims={original_dims}")
+                    if processed_dims and processed_dims.get("width") and processed_dims.get("height"):
+                        # Store processed dimensions for this page
+                        image_dimensions[f"page_{i}"]["processed_width"] = processed_dims.get("width")
+                        image_dimensions[f"page_{i}"]["processed_height"] = processed_dims.get("height")
+                        logger.info(
+                            f"Page {i}: Processed dimensions inferred as "
+                            f"{processed_dims.get('width')}x{processed_dims.get('height')} "
+                            f"(original: {original_dims.get('width')}x{original_dims.get('height')})"
+                        )
+                    else:
+                        logger.warning(f"Page {i}: Processed dimensions missing or invalid in _image_info")
+                else:
+                    logger.warning(f"Page {i}: No _image_info found in page_schema")
                 
                 # Add page number and clean up field IDs
                 existing_ids = {f.get("id") for f in all_fields}
@@ -617,7 +739,8 @@ IMPORTANT:
             "form_name": form_name,
             "total_pages": len(image_paths),
             "fields": all_fields,
-            "page_results": page_results  # Track which pages succeeded/failed
+            "page_results": page_results,  # Track which pages succeeded/failed
+            "image_dimensions": image_dimensions  # Store image dimensions for coordinate scaling
         }
         
         successful_pages = sum(1 for r in page_results if r.get("status") == "success")
