@@ -1,28 +1,30 @@
 """
-PDF Filler Agent (Action Layer) - Image-Based Implementation
+PDF Filler Agent (Action Layer) - PyMuPDF-Based Implementation
 Micro-Agent 3: Fills PDF forms with user data based on schema.
 
-This is an image-based solution that:
-- Loads images from PDF ingestion step
-- Draws text, checkmarks, and signatures on images using PIL
-- Converts filled images back to PDF
+This solution:
+- Loads the original PDF directly using PyMuPDF
+- Converts image coordinates (from Gemini analysis) to PDF coordinates
+- Draws text, checkmarks, and signatures directly on PDF pages
+- Preserves PDF quality and avoids image conversion issues
 
 Responsibilities:
-- Load original PDF page images
+- Load original PDF file
+- Convert coordinates from image space (300 DPI, top-left) to PDF space (72 DPI, bottom-left)
 - Place text into each bounding box with proper alignment
 - Draw checkmarks for checkboxes
 - Handle signature fields (text or image)
 - Handle multi-part fields (SSN, Medicare, dates)
 - Apply conditional field logic
-- Combine pages and produce final filled PDF
+- Save filled PDF
 """
 
 import json
 import logging
+import io
 from pathlib import Path
 from typing import Dict, List, Optional, Any, Tuple
-from PIL import Image, ImageDraw, ImageFont
-import io
+from PIL import Image, ImageFont, ImageDraw  # Still needed for font loading and signature images
 
 # Configure logging
 logging.basicConfig(
@@ -34,6 +36,14 @@ logging.basicConfig(
     ]
 )
 logger = logging.getLogger(__name__)
+
+# Try to import PyMuPDF
+try:
+    import fitz  # PyMuPDF
+    PYMUPDF_AVAILABLE = True
+except ImportError:
+    PYMUPDF_AVAILABLE = False
+    logger.warning("PyMuPDF not available. Please install: pip install PyMuPDF")
 
 
 class PDFFillerAgent:
@@ -48,40 +58,52 @@ class PDFFillerAgent:
     
     def __init__(
         self,
-        images_dir: str = "output/images",
+        forms_dir: str = "forms",
         output_dir: str = "output/filled_pdfs",
+        images_dir: str = "output/images",  # Still needed for reference
         font_size: int = None,
         font_path: Optional[str] = None,
         text_color: Tuple[int, int, int] = None,
         checkbox_color: Tuple[int, int, int] = None,
-        signature_image_dir: Optional[str] = None
+        signature_image_dir: Optional[str] = None,
+        image_dpi: int = 300  # DPI used for image conversion (for coordinate conversion)
     ):
         """
         Initialize the PDF Filler Agent.
         
         Args:
-            images_dir: Directory containing form images from ingestion step
+            forms_dir: Directory containing original PDF forms
             output_dir: Directory to save filled PDFs
+            images_dir: Directory containing form images (for reference, not used for filling)
             font_size: Default font size for text (default: 12)
             font_path: Path to TrueType font file (None = use default)
             text_color: RGB tuple for text color (default: (0, 0, 0) black)
             checkbox_color: RGB tuple for checkbox checkmark (default: (0, 0, 0) black)
             signature_image_dir: Directory containing signature images (optional)
+            image_dpi: DPI used when converting PDF to images (default: 300)
         """
-        self.images_dir = Path(images_dir)
+        if not PYMUPDF_AVAILABLE:
+            raise ImportError("PyMuPDF is required. Install with: pip install PyMuPDF")
+        
+        self.forms_dir = Path(forms_dir)
         self.output_dir = Path(output_dir)
         self.output_dir.mkdir(parents=True, exist_ok=True)
+        self.images_dir = Path(images_dir)  # Keep for reference
+        self.image_dpi = image_dpi
         
         self.font_size = font_size or self.DEFAULT_FONT_SIZE
         self.text_color = text_color or self.DEFAULT_TEXT_COLOR
         self.checkbox_color = checkbox_color or self.CHECKBOX_CHECK_COLOR
         self.signature_image_dir = Path(signature_image_dir) if signature_image_dir else None
         
-        # Load font
+        # Load font (for font metrics, PyMuPDF will use system fonts)
         self.font = self._load_font(font_path)
+        self.font_path = font_path  # Store for PyMuPDF
         
-        logger.info(f"PDF Filler Agent initialized. Images directory: {self.images_dir}")
+        logger.info(f"PDF Filler Agent initialized (PyMuPDF-based)")
+        logger.info(f"Forms directory: {self.forms_dir}")
         logger.info(f"Output directory: {self.output_dir}")
+        logger.info(f"Image DPI: {self.image_dpi} (for coordinate conversion)")
     
     def _load_font(self, font_path: Optional[str] = None) -> Optional[ImageFont.FreeTypeFont]:
         """
@@ -183,22 +205,127 @@ class PDFFillerAgent:
         logger.info(f"Loaded user data with {len(user_data)} fields")
         return user_data
     
-    def _get_image_path(self, form_name: str, page_num: int) -> Path:
+    def _get_pdf_path(self, form_name: str) -> Path:
         """
-        Get path to page image from ingestion step.
+        Get path to original PDF form.
         
         Args:
             form_name: Name of the form
-            page_num: Page number (1-indexed)
             
         Returns:
-            Path to image file
+            Path to PDF file
         """
-        image_path = self.images_dir / form_name / f"page_{page_num:03d}.png"
-        if not image_path.exists():
-            # Try lowercase
-            image_path = self.images_dir / form_name.lower() / f"page_{page_num:03d}.png"
-        return image_path
+        pdf_path = self.forms_dir / f"{form_name}.pdf"
+        if not pdf_path.exists():
+            # Try with different case
+            pdf_path = self.forms_dir / f"{form_name.lower()}.pdf"
+        if not pdf_path.exists():
+            # Try uppercase
+            pdf_path = self.forms_dir / f"{form_name.upper()}.pdf"
+        return pdf_path
+    
+    def _convert_image_to_pdf_coords(
+        self,
+        image_bbox: List[float],
+        image_width: int,
+        image_height: int,
+        pdf_page_width: float,
+        pdf_page_height: float,
+        processed_width: Optional[int] = None,
+        processed_height: Optional[int] = None,
+        crop_region: Optional[Dict[str, Any]] = None
+    ) -> fitz.Rect:
+        """
+        Convert bounding box coordinates from image space to PDF space.
+        Handles cropping by using crop_region metadata when available.
+        
+        Image space: pixels at image_dpi (300 DPI), top-left origin
+        PDF space: points at 72 DPI, top-left origin (PyMuPDF)
+        
+        Args:
+            image_bbox: Bounding box in image coordinates [x1, y1, x2, y2]
+            image_width: Width of the image in pixels
+            image_height: Height of the image in pixels
+            pdf_page_width: Width of PDF page in points
+            pdf_page_height: Height of PDF page in points
+            processed_width: Width that Gemini processed (if different from image_width)
+            processed_height: Height that Gemini processed (if different from image_height)
+            crop_region: Crop region metadata dict with offset_x, offset_y, width, height, detected
+            
+        Returns:
+            fitz.Rect in PDF coordinates
+        """
+        x1_img, y1_img, x2_img, y2_img = image_bbox
+        
+        # Step 1: Handle cropping if detected
+        # If crop_region is provided and cropping was detected, coordinates are relative to crop region
+        # We need to map them to the full original image
+        if crop_region and crop_region.get("detected", False):
+            crop_offset_x = crop_region.get("offset_x", 0)
+            crop_offset_y = crop_region.get("offset_y", 0)
+            crop_width = crop_region.get("width", image_width)
+            crop_height = crop_region.get("height", image_height)
+            
+            # If coordinates are relative to crop region, add crop offset
+            # But first check: if coordinates exceed crop region, they might already be in full image space
+            # (This handles the case where Gemini followed the prompt and returned full-image coordinates)
+            if x1_img < crop_width and y1_img < crop_height:
+                # Coordinates appear to be relative to crop region - add offset
+                x1_img = x1_img + crop_offset_x
+                y1_img = y1_img + crop_offset_y
+                x2_img = x2_img + crop_offset_x
+                y2_img = y2_img + crop_offset_y
+                logger.debug(
+                    f"Applied crop offset: ({crop_offset_x}, {crop_offset_y}) "
+                    f"to map from crop region to full image"
+                )
+            else:
+                # Coordinates already appear to be in full image space
+                logger.debug(
+                    f"Coordinates appear to be in full image space (exceed crop region), "
+                    f"skipping crop offset"
+                )
+        
+        # Step 2: Account for Gemini's processed dimensions vs actual image dimensions
+        # If Gemini processed at a different size (and no crop detected), scale coordinates
+        # Note: If crop was detected, we already handled it above, so skip this step
+        if processed_width and processed_height and (not crop_region or not crop_region.get("detected", False)):
+            scale_x = image_width / processed_width
+            scale_y = image_height / processed_height
+            x1_img = x1_img * scale_x
+            y1_img = y1_img * scale_y
+            x2_img = x2_img * scale_x
+            y2_img = y2_img * scale_y
+            logger.debug(
+                f"Scaled from processed ({processed_width}x{processed_height}) to "
+                f"actual image ({image_width}x{image_height}): "
+                f"scale factors {scale_x:.3f}x, {scale_y:.3f}y"
+            )
+        
+        # Step 3: Convert from image pixels to PDF points
+        # Use direct scaling: pdf_point = image_pixel * (pdf_size / image_size)
+        scale_to_pdf_x = pdf_page_width / image_width
+        scale_to_pdf_y = pdf_page_height / image_height
+        
+        x1_pt = x1_img * scale_to_pdf_x
+        y1_pt = y1_img * scale_to_pdf_y
+        x2_pt = x2_img * scale_to_pdf_x
+        y2_pt = y2_img * scale_to_pdf_y
+        
+        logger.debug(
+            f"Converted to PDF points: scale factors {scale_to_pdf_x:.6f}x, {scale_to_pdf_y:.6f}y, "
+            f"PDF size {pdf_page_width:.1f}x{pdf_page_height:.1f}"
+        )
+        
+        # Step 4: PyMuPDF uses top-left origin (same as images), so NO Y-flip needed!
+        # Create fitz.Rect (PyMuPDF rectangle)
+        # fitz.Rect(x0, y0, x1, y1) where:
+        # - (x0, y0) is top-left corner
+        # - (x1, y1) is bottom-right corner
+        # - y0 < y1 (top < bottom in PyMuPDF coordinates)
+        rect = fitz.Rect(x1_pt, y1_pt, x2_pt, y2_pt)
+        
+        return rect
     
     def _should_fill_field(self, field: Dict[str, Any], user_data: Dict[str, Any]) -> bool:
         """
@@ -749,6 +876,278 @@ class PDFFillerAgent:
         
         return scaled_field
     
+    def _draw_text_field_pymupdf(
+        self,
+        page: fitz.Page,
+        field: Dict[str, Any],
+        rect: fitz.Rect,
+        value: str
+    ):
+        """
+        Draw text into a field's bounding box using PyMuPDF.
+        
+        Args:
+            page: PyMuPDF page object
+            field: Field definition from schema
+            rect: Bounding box rectangle in PDF coordinates
+            value: Text value to place
+        """
+        if not value:
+            return
+        
+        # Format value if needed
+        formatted_value = self._format_value_for_field(value, field)
+        
+        # Calculate font size to fit the rectangle
+        font_size = self._calculate_font_size_pymupdf(formatted_value, rect)
+        
+        # Get font name
+        font_name = "helv"  # Default Helvetica
+        if self.font_path:
+            # Try to extract font name from path
+            font_name = Path(self.font_path).stem.lower()
+            if "arial" in font_name:
+                font_name = "helv"
+            elif "times" in font_name:
+                font_name = "times"
+            elif "courier" in font_name:
+                font_name = "cour"
+        
+        # Insert text
+        try:
+            # PyMuPDF insert_text uses (x, y) where y is from bottom of page
+            # rect.y0 is bottom of rect (smaller y), rect.y1 is top of rect (larger y)
+            # Position text near the bottom of the rect, slightly above baseline
+            # Since y increases upward in PDF, we add to y0 to move up
+            text_point = fitz.Point(rect.x0, rect.y0 + (rect.height * 0.2))
+            
+            page.insert_text(
+                text_point,
+                formatted_value,
+                fontsize=font_size,
+                fontname=font_name,
+                color=self.text_color
+            )
+        except Exception as e:
+            logger.warning(f"Failed to insert text for field {field.get('id')}: {e}")
+    
+    def _calculate_font_size_pymupdf(
+        self,
+        text: str,
+        rect: fitz.Rect,
+        max_font_size: int = 20,
+        min_font_size: int = 8
+    ) -> int:
+        """
+        Calculate appropriate font size to fit text within rectangle using PyMuPDF.
+        
+        Args:
+            text: Text to fit
+            rect: Bounding rectangle in PDF points
+            max_font_size: Maximum font size
+            min_font_size: Minimum font size
+            
+        Returns:
+            Appropriate font size
+        """
+        if not text:
+            return self.font_size
+        
+        rect_width = rect.width
+        rect_height = rect.height
+        
+        if rect_width <= 0 or rect_height <= 0:
+            return self.font_size
+        
+        # Binary search for appropriate font size
+        best_size = min_font_size
+        low, high = min_font_size, max_font_size
+        
+        while low <= high:
+            size = (low + high) // 2
+            try:
+                # Estimate text width (approximate: 0.6 * font_size per character)
+                estimated_width = len(text) * size * 0.6
+                estimated_height = size * 1.2  # Approximate line height
+                
+                if estimated_width <= rect_width * 0.9 and estimated_height <= rect_height * 0.8:
+                    best_size = size
+                    low = size + 1
+                else:
+                    high = size - 1
+            except:
+                break
+        
+        return best_size
+    
+    def _draw_checkbox_pymupdf(
+        self,
+        page: fitz.Page,
+        field: Dict[str, Any],
+        rect: fitz.Rect,
+        checked: bool
+    ):
+        """
+        Draw a checkmark in a checkbox field using PyMuPDF.
+        
+        Args:
+            page: PyMuPDF page object
+            field: Field definition from schema
+            rect: Bounding box rectangle in PDF coordinates
+            checked: Whether checkbox should be checked
+        """
+        if not checked:
+            return
+        
+        # Draw checkmark using lines
+        width = rect.width
+        height = rect.height
+        margin = min(width, height) * 0.15
+        
+        # Checkmark points
+        # rect.y0 is bottom, rect.y1 is top in PDF coordinates
+        p1 = fitz.Point(rect.x0 + margin, rect.y0 + height * 0.4)  # Bottom-left part
+        p2 = fitz.Point(rect.x0 + width * 0.4, rect.y0 + height * 0.5)  # Center
+        p3 = fitz.Point(rect.x1 - margin, rect.y1 - margin)  # Top-right
+        
+        # Draw checkmark as two lines
+        try:
+            page.draw_line(p1, p2, color=self.checkbox_color, width=self.CHECKBOX_LINE_WIDTH)
+            page.draw_line(p2, p3, color=self.checkbox_color, width=self.CHECKBOX_LINE_WIDTH)
+        except Exception as e:
+            logger.warning(f"Failed to draw checkbox for field {field.get('id')}: {e}")
+    
+    def _draw_signature_pymupdf(
+        self,
+        page: fitz.Page,
+        field: Dict[str, Any],
+        rect: fitz.Rect,
+        value: str
+    ):
+        """
+        Draw signature in signature field using PyMuPDF.
+        
+        Args:
+            page: PyMuPDF page object
+            field: Field definition from schema
+            rect: Bounding box rectangle in PDF coordinates
+            value: Signature value (text or path to image)
+        """
+        if not value:
+            return
+        
+        # Check if value is a path to an image file
+        sig_path = Path(value)
+        if sig_path.exists() or (self.signature_image_dir and (self.signature_image_dir / value).exists()):
+            try:
+                # Load signature image
+                if sig_path.exists():
+                    sig_image = Image.open(sig_path)
+                else:
+                    sig_image = Image.open(self.signature_image_dir / value)
+                
+                # Convert PIL image to PyMuPDF image
+                # Save to bytes
+                img_bytes = io.BytesIO()
+                sig_image.save(img_bytes, format='PNG')
+                img_bytes.seek(0)
+                
+                # Insert image into PDF
+                page.insert_image(rect, stream=img_bytes.getvalue())
+                logger.info(f"Inserted signature image for field {field.get('id')}")
+                return
+            except Exception as e:
+                logger.warning(f"Failed to insert signature image: {e}, falling back to text")
+        
+        # Fallback to text signature
+        self._draw_text_field_pymupdf(page, field, rect, value)
+    
+    def _draw_multipart_field_pymupdf(
+        self,
+        page: fitz.Page,
+        field: Dict[str, Any],
+        value: str,
+        image_width: int,
+        image_height: int,
+        pdf_width: float,
+        pdf_height: float,
+        processed_width: Optional[int] = None,
+        processed_height: Optional[int] = None,
+        crop_region: Optional[Dict[str, Any]] = None
+    ):
+        """
+        Draw text into a multi-part field using PyMuPDF.
+        
+        Args:
+            page: PyMuPDF page object
+            field: Field definition with parts array
+            value: Full value to split across parts
+            image_width: Original image width
+            image_height: Original image height
+            pdf_width: PDF page width
+            pdf_height: PDF page height
+            processed_width: Processed image width (if different)
+            processed_height: Processed image height (if different)
+        """
+        if not value or not field.get('parts'):
+            # Fallback to regular text field
+            bbox = field.get('bbox', [])
+            if len(bbox) >= 4 and image_width and image_height:
+                rect = self._convert_image_to_pdf_coords(
+                    bbox, image_width, image_height, pdf_width, pdf_height,
+                    processed_width, processed_height, crop_region
+                )
+                self._draw_text_field_pymupdf(page, field, rect, value)
+            return
+        
+        # Format and split value (same logic as before)
+        formatted_value = self._format_value_for_field(value, field)
+        format_hint = field.get('format_hint', '')
+        parts = field['parts']
+        
+        if format_hint == "XXX-XX-XXXX":
+            clean_value = ''.join(c for c in formatted_value if c.isalnum())[:9]
+            if len(clean_value) >= 9:
+                part_values = [clean_value[:3], clean_value[3:5], clean_value[5:9]]
+            else:
+                part_values = self._split_value_evenly(clean_value, len(parts))
+        elif format_hint == "MM/YYYY":
+            if '/' in formatted_value:
+                part_values = formatted_value.split('/')
+            else:
+                clean_value = ''.join(c for c in formatted_value if c.isalnum())
+                part_values = [
+                    clean_value[:2] if len(clean_value) >= 2 else clean_value,
+                    clean_value[2:] if len(clean_value) > 2 else ""
+                ]
+        elif format_hint == "MM/DD/YYYY":
+            if '/' in formatted_value:
+                part_values = formatted_value.split('/')
+            else:
+                clean_value = ''.join(c for c in formatted_value if c.isalnum())
+                if len(clean_value) >= 8:
+                    part_values = [clean_value[:2], clean_value[2:4], clean_value[4:8]]
+                else:
+                    part_values = self._split_value_evenly(clean_value, 3)
+        elif format_hint == "XXXXX":
+            clean_value = ''.join(c for c in formatted_value if c.isdigit())
+            part_values = list(clean_value[:5].ljust(5, ' '))
+        else:
+            clean_value = ''.join(c for c in formatted_value if c.isalnum())
+            part_values = self._split_value_evenly(clean_value, len(parts))
+        
+        # Draw each part
+        for i, part in enumerate(parts):
+            if i < len(part_values) and part_values[i]:
+                part_bbox = part.get('bbox', [])
+                if len(part_bbox) >= 4 and image_width and image_height:
+                    part_rect = self._convert_image_to_pdf_coords(
+                        part_bbox, image_width, image_height, pdf_width, pdf_height,
+                        processed_width, processed_height, crop_region
+                    )
+                    part_field = {**field, 'bbox': part_bbox}
+                    self._draw_text_field_pymupdf(page, part_field, part_rect, part_values[i])
+    
     def fill_pdf(
         self,
         form_name: str,
@@ -757,10 +1156,10 @@ class PDFFillerAgent:
         output_filename: Optional[str] = None
     ) -> str:
         """
-        Fill a PDF form with user data based on schema.
+        Fill a PDF form with user data based on schema using PyMuPDF.
         
         Args:
-            form_name: Name of the form (used to locate images)
+            form_name: Name of the form (used to locate original PDF)
             schema_path: Path to schema JSON file
             user_data_path: Path to user data JSON file
             output_filename: Optional output filename (auto-generated if None)
@@ -769,7 +1168,7 @@ class PDFFillerAgent:
             Path to filled PDF file
         """
         logger.info("=" * 60)
-        logger.info("PDF Filler Agent - Starting (Image-Based)")
+        logger.info("PDF Filler Agent - Starting (PyMuPDF-Based)")
         logger.info("=" * 60)
         
         # Load schema and user data
@@ -778,12 +1177,21 @@ class PDFFillerAgent:
         
         logger.info(f"Filling form: {form_name}")
         
-        # Get total pages from schema
-        total_pages = schema.get('total_pages', 1)
-        logger.info(f"Form has {total_pages} total pages")
+        # Get original PDF path
+        pdf_path = self._get_pdf_path(form_name)
+        if not pdf_path.exists():
+            raise FileNotFoundError(f"Original PDF not found: {pdf_path}")
+        
+        logger.info(f"Opening original PDF: {pdf_path}")
+        
+        # Open PDF with PyMuPDF
+        doc = fitz.open(pdf_path)
+        
+        # Get total pages
+        total_pages = len(doc)
+        logger.info(f"PDF has {total_pages} pages")
         
         # Store reference image dimensions from schema (if available)
-        # This helps us scale coordinates if images were resized
         reference_dimensions = schema.get('image_dimensions', {})
         
         # Group fields by page
@@ -794,123 +1202,53 @@ class PDFFillerAgent:
                 fields_by_page[page_num] = []
             fields_by_page[page_num].append(field)
         
-        # Process ALL pages from 1 to total_pages (not just pages with fields)
-        filled_images = []
         total_fields_filled = 0
         
-        for page_num in range(1, total_pages + 1):
-            # Load page image
-            image_path = self._get_image_path(form_name, page_num)
-            if not image_path.exists():
-                logger.warning(f"Image not found for page {page_num}: {image_path}")
-                # Still add a placeholder to maintain page order
-                # Try to create a blank image with same dimensions as other pages
-                if filled_images:
-                    # Use dimensions from previous page
-                    blank_image = Image.new('RGB', filled_images[0].size, color='white')
-                    filled_images.append(blank_image)
-                    logger.warning(f"Created blank placeholder for missing page {page_num}")
-                continue
+        # Process each page (0-indexed in PyMuPDF)
+        for page_idx in range(total_pages):
+            page_num = page_idx + 1  # 1-indexed for schema
+            page = doc[page_idx]
+            
+            # Get PDF page dimensions
+            pdf_rect = page.rect
+            pdf_width = pdf_rect.width
+            pdf_height = pdf_rect.height
+            logger.info(f"Page {page_num} PDF dimensions: {pdf_width:.1f}x{pdf_height:.1f} points")
             
             # Get fields for this page (may be empty)
             fields = fields_by_page.get(page_num, [])
             logger.info(f"Processing page {page_num} with {len(fields)} fields")
             
-            # Load image
-            image = Image.open(image_path)
-            # Convert to RGB if necessary (for PDF conversion)
-            if image.mode != 'RGB':
-                image = image.convert('RGB')
-            
-            # Get actual image dimensions
-            img_width, img_height = image.size
-            logger.info(f"Page {page_num} image dimensions: {img_width}x{img_height}")
-            
-            # Check if we need to scale coordinates
-            # Get reference dimensions for this page (if stored in schema)
+            # Get reference image dimensions and crop region for coordinate conversion
             page_ref_key = f"page_{page_num}"
-            scale_x = scale_y = 1.0
+            image_width = None
+            image_height = None
+            processed_width = None
+            processed_height = None
+            crop_region = None
             
             if page_ref_key in reference_dimensions:
-                # Calculate actual max bounding box coordinates from fields on this page
-                # This is more accurate than inferred processed dimensions
-                page_fields = [f for f in fields if f.get('page') == page_num]
-                actual_max_x = 0
-                actual_max_y = 0
-                
-                for field in page_fields:
-                    # Check main bbox
-                    bbox = field.get('bbox', [])
-                    if len(bbox) >= 4:
-                        actual_max_x = max(actual_max_x, bbox[2])
-                        actual_max_y = max(actual_max_y, bbox[3])
-                    
-                    # Check parts bboxes
-                    parts = field.get('parts', [])
-                    if parts:
-                        for part in parts:
-                            part_bbox = part.get('bbox', [])
-                            if len(part_bbox) >= 4:
-                                actual_max_x = max(actual_max_x, part_bbox[2])
-                                actual_max_y = max(actual_max_y, part_bbox[3])
-                
-                # Prefer processed dimensions (what Gemini actually saw) over original
-                processed_width = reference_dimensions[page_ref_key].get('processed_width')
-                processed_height = reference_dimensions[page_ref_key].get('processed_height')
+                page_dims = reference_dimensions[page_ref_key]
+                image_width = page_dims.get('width')
+                image_height = page_dims.get('height')
+                processed_width = page_dims.get('processed_width')
+                processed_height = page_dims.get('processed_height')
+                crop_region = page_dims.get('crop_region')
                 
                 if processed_width and processed_height:
-                    # Prefer actual max bbox coordinates over processed dimensions for accuracy
-                    # The processed dimensions may include a margin that causes misalignment
-                    if actual_max_x > 0 and actual_max_y > 0:
-                        # Use actual max coordinates with a small margin (2% instead of 5%)
-                        # This should be more accurate than the inferred processed dimensions
-                        ref_width = int(actual_max_x * 1.02)
-                        ref_height = int(actual_max_y * 1.02)
-                        logger.info(
-                            f"Page {page_num}: Using actual max bbox coordinates ({actual_max_x}x{actual_max_y}) "
-                            f"with 2% margin ({ref_width}x{ref_height}) instead of processed dimensions "
-                            f"({processed_width}x{processed_height}) for more accurate scaling"
-                        )
-                    else:
-                        # Fallback to processed dimensions if we can't determine actual max
-                        ref_width = processed_width
-                        ref_height = processed_height
-                        logger.info(
-                            f"Page {page_num}: Using processed dimensions {ref_width}x{ref_height} "
-                            f"(could not determine actual max bbox)"
-                        )
-                else:
-                    # Fallback to original dimensions
-                    ref_width = reference_dimensions[page_ref_key].get('width')
-                    ref_height = reference_dimensions[page_ref_key].get('height')
+                    crop_info = ""
+                    if crop_region and crop_region.get('detected'):
+                        crop_info = f", CROP DETECTED: offset=({crop_region.get('offset_x')},{crop_region.get('offset_y')}), size={crop_region.get('width')}x{crop_region.get('height')}"
                     logger.info(
-                        f"Page {page_num}: Using original dimensions {ref_width}x{ref_height} "
-                        f"(no processed dimensions found)"
+                        f"Page {page_num}: Image dimensions {image_width}x{image_height}, "
+                        f"Processed dimensions {processed_width}x{processed_height}{crop_info}"
                     )
-                
-                if ref_width and ref_height:
-                    scale_x = img_width / ref_width
-                    scale_y = img_height / ref_height
-                    if abs(scale_x - 1.0) > 0.01 or abs(scale_y - 1.0) > 0.01:
-                        logger.info(
-                            f"Page {page_num} coordinate scaling: "
-                            f"Reference (Gemini processed): {ref_width}x{ref_height}, "
-                            f"Actual (loaded image): {img_width}x{img_height}. "
-                            f"Scaling factors: {scale_x:.3f}x (horizontal), {scale_y:.3f}x (vertical)"
-                        )
-                    else:
-                        logger.debug(f"Page {page_num} image dimensions match reference - no scaling needed")
-            else:
-                # No reference dimensions in schema (old schema format)
-                # Log a warning but proceed - coordinates should match if images are unchanged
-                logger.debug(
-                    f"Page {page_num}: No reference dimensions in schema. "
-                    f"Assuming coordinates match image size {img_width}x{img_height}"
-                )
-            
-            draw = ImageDraw.Draw(image)
+                else:
+                    logger.info(f"Page {page_num}: Image dimensions {image_width}x{image_height}")
             
             page_fields_filled = 0
+            
+            # Process each field on this page
             for field in fields:
                 field_id = field.get('id')
                 field_type = field.get('type')
@@ -924,60 +1262,71 @@ class PDFFillerAgent:
                 if value is None:
                     continue
                 
-                # Scale field coordinates if needed
-                scaled_field = self._scale_field_coordinates(field, scale_x, scale_y)
-                
-                # Debug logging for coordinate scaling (first few fields and multi-part fields)
-                if page_fields_filled < 5 or field.get('parts'):
-                    original_bbox = field.get('bbox', [])
-                    scaled_bbox = scaled_field.get('bbox', [])
-                    logger.info(
-                        f"Field '{field_id}': Original bbox {original_bbox} -> "
-                        f"Scaled bbox {scaled_bbox} (scale: {scale_x:.3f}x{scale_y:.3f})"
+                # Convert coordinates from image space to PDF space
+                if image_width and image_height:
+                    pdf_rect_bbox = self._convert_image_to_pdf_coords(
+                        field.get('bbox', []),
+                        image_width,
+                        image_height,
+                        pdf_width,
+                        pdf_height,
+                        processed_width,
+                        processed_height,
+                        crop_region
                     )
-                    if field.get('parts'):
-                        for i, part in enumerate(field.get('parts', [])):
-                            orig_part_bbox = part.get('bbox', [])
-                            scaled_part = scaled_field.get('parts', [])[i] if i < len(scaled_field.get('parts', [])) else {}
-                            scaled_part_bbox = scaled_part.get('bbox', [])
-                            logger.info(
-                                f"  Part {i+1}: Original {orig_part_bbox} -> Scaled {scaled_part_bbox}"
-                            )
+                else:
+                    # Fallback: assume coordinates are already in PDF space (unlikely but handle it)
+                    bbox = field.get('bbox', [])
+                    if len(bbox) >= 4:
+                        pdf_rect_bbox = fitz.Rect(bbox[0], pdf_height - bbox[3], bbox[2], pdf_height - bbox[1])
+                    else:
+                        logger.warning(f"Invalid bbox for field {field_id}, skipping")
+                        continue
+                
+                # Debug logging for first few fields
+                if page_fields_filled < 5:
+                    logger.info(
+                        f"Field '{field_id}': Image bbox {field.get('bbox')} -> "
+                        f"PDF rect {pdf_rect_bbox}"
+                    )
                 
                 # Fill field based on type
                 try:
                     if field_type == 'checkbox':
                         checked = bool(value) if isinstance(value, bool) else str(value).lower() in ['true', 'yes', '1', 'checked']
-                        self._draw_checkbox(image, draw, scaled_field, checked)
+                        self._draw_checkbox_pymupdf(page, field, pdf_rect_bbox, checked)
                         page_fields_filled += 1
                     
                     elif field_type == 'signature':
-                        self._draw_signature(image, draw, scaled_field, str(value))
+                        self._draw_signature_pymupdf(page, field, pdf_rect_bbox, str(value))
                         page_fields_filled += 1
                     
                     elif field_type in ['text', 'date', 'number']:
                         if field.get('parts'):
                             # Multi-part field
-                            self._draw_multipart_field(image, draw, scaled_field, str(value))
+                            self._draw_multipart_field_pymupdf(
+                                page, field, str(value), 
+                                image_width, image_height, pdf_width, pdf_height,
+                                processed_width, processed_height, crop_region
+                            )
                         else:
                             # Regular text field
-                            self._draw_text_field(image, draw, scaled_field, str(value))
+                            self._draw_text_field_pymupdf(page, field, pdf_rect_bbox, str(value))
                         page_fields_filled += 1
                     
                     elif field_type == 'grouped_choices':
                         # For radio buttons/choices, draw the selected option as text
                         if value in field.get('options', []):
-                            self._draw_text_field(image, draw, scaled_field, str(value))
+                            self._draw_text_field_pymupdf(page, field, pdf_rect_bbox, str(value))
                             page_fields_filled += 1
                     
                     else:
                         logger.warning(f"Unknown field type: {field_type} for field {field_id}")
                 
                 except Exception as e:
-                    logger.error(f"Error filling field {field_id}: {e}")
+                    logger.error(f"Error filling field {field_id}: {e}", exc_info=True)
             
             total_fields_filled += page_fields_filled
-            filled_images.append(image)
             logger.info(f"Filled {page_fields_filled} fields on page {page_num}")
         
         # Generate output filename
@@ -986,16 +1335,9 @@ class PDFFillerAgent:
         
         output_path = self.output_dir / output_filename
         
-        # Save as PDF
-        if filled_images:
-            # Save first image as PDF
-            filled_images[0].save(
-                output_path,
-                "PDF",
-                resolution=300.0,
-                save_all=True,
-                append_images=filled_images[1:] if len(filled_images) > 1 else []
-            )
+        # Save filled PDF
+        doc.save(output_path)
+        doc.close()
         
         logger.info("=" * 60)
         logger.info(f"PDF Filler Agent - Complete")
@@ -1010,20 +1352,22 @@ def main():
     """Main function to run the PDF Filler Agent."""
     import argparse
     
-    parser = argparse.ArgumentParser(description='Fill PDF forms with user data (image-based)')
+    parser = argparse.ArgumentParser(description='Fill PDF forms with user data (PyMuPDF-based)')
     parser.add_argument('--form-name', required=True, help='Name of the form (e.g., cms-40b-508c-2025)')
     parser.add_argument('--schema', required=True, help='Path to schema JSON file')
     parser.add_argument('--data', required=True, help='Path to user data JSON file')
     parser.add_argument('--output', help='Output filename (optional)')
-    parser.add_argument('--images-dir', default='output/images', help='Directory containing form images')
+    parser.add_argument('--forms-dir', default='forms', help='Directory containing original PDF forms')
     parser.add_argument('--output-dir', default='output/filled_pdfs', help='Output directory for filled PDFs')
+    parser.add_argument('--images-dir', default='output/images', help='Directory containing form images (for reference)')
     
     args = parser.parse_args()
     
     # Initialize agent
     agent = PDFFillerAgent(
-        images_dir=args.images_dir,
-        output_dir=args.output_dir
+        forms_dir=args.forms_dir,
+        output_dir=args.output_dir,
+        images_dir=args.images_dir
     )
     
     # Fill PDF

@@ -173,6 +173,10 @@ CRITICAL REQUIREMENTS - You must extract ALL of the following for each field:
 2. LABEL EXTRACTION: The complete text label/question near each field with full context
 3. FIELD TYPE: text, number, checkbox, selection, grouped_choices, date, signature
 4. BOUNDING BOX: Accurate pixel coordinates [x1, y1, x2, y2] where (x1,y1) is top-left and (x2,y2) is bottom-right
+   - CRITICAL: All coordinates MUST be relative to the FULL ORIGINAL IMAGE dimensions
+   - The image you receive is the complete original image. Report coordinates relative to this full image.
+   - If the image appears cropped or resized in your view, you must still report coordinates relative to the original full image dimensions.
+   - All x coordinates must be between 0 and the image width, all y coordinates must be between 0 and the image height.
 5. REQUIRED STATUS: You MUST mark as required if you see:
    - Asterisks (*) next to the field
    - "Required" text anywhere near the field
@@ -528,7 +532,8 @@ IMPORTANT:
                 parsed_response = json.loads(response_text)
                 fields = parsed_response.get("fields", [])
                 
-                # Initialize max coordinates
+                # Initialize min/max coordinates for crop detection
+                min_x = min_y = float('inf')
                 max_x = max_y = 0
                 
                 if not fields:
@@ -536,14 +541,17 @@ IMPORTANT:
                     logger.warning("No fields in response, cannot infer processed dimensions")
                     processed_width = original_width
                     processed_height = original_height
+                    crop_region = None
                 else:
-                    # Find maximum bounding box coordinates to infer Gemini's processed image size
+                    # Find min/max bounding box coordinates to detect crop region
                     for field in fields:
                         if not isinstance(field, dict):
                             continue
                             
                         bbox = field.get("bbox", [])
                         if bbox and len(bbox) >= 4:
+                            min_x = min(min_x, bbox[0])  # x1 (left edge)
+                            min_y = min(min_y, bbox[1])  # y1 (top edge)
                             max_x = max(max_x, bbox[2])  # x2 (right edge)
                             max_y = max(max_y, bbox[3])  # y2 (bottom edge)
                         
@@ -555,38 +563,106 @@ IMPORTANT:
                                     continue
                                 part_bbox = part.get("bbox", [])
                                 if part_bbox and len(part_bbox) >= 4:
+                                    min_x = min(min_x, part_bbox[0])
+                                    min_y = min(min_y, part_bbox[1])
                                     max_x = max(max_x, part_bbox[2])
                                     max_y = max(max_y, part_bbox[3])
                     
-                    # Infer processed dimensions
-                    # If max coordinates are significantly less than original, Gemini likely resized
-                    if max_x > 0 and max_y > 0:
+                    # Detect if cropping occurred
+                    if max_x > 0 and max_y > 0 and min_x != float('inf'):
                         # Add a small margin (5%) to account for fields near edges
-                        processed_width = int(max_x * 1.05)
-                        processed_height = int(max_y * 1.05)
+                        crop_right = int(max_x * 1.05)
+                        crop_bottom = int(max_y * 1.05)
+                        crop_left = max(0, int(min_x * 0.95))  # Small margin on left
+                        crop_top = max(0, int(min_y * 0.95))   # Small margin on top
                         
-                        # If inferred size is very close to original, assume no resizing
-                        if abs(processed_width - original_width) < 50 and abs(processed_height - original_height) < 50:
+                        crop_width = crop_right - crop_left
+                        crop_height = crop_bottom - crop_top
+                        
+                        # Check if coordinates suggest cropping/resizing
+                        # If crop region is significantly smaller than original, likely cropped
+                        width_ratio = crop_width / original_width if original_width > 0 else 1.0
+                        height_ratio = crop_height / original_height if original_height > 0 else 1.0
+                        
+                        # Check aspect ratio mismatch (indicates cropping/distortion)
+                        original_aspect = original_width / original_height if original_height > 0 else 1.0
+                        crop_aspect = crop_width / crop_height if crop_height > 0 else 1.0
+                        aspect_diff = abs(original_aspect - crop_aspect)
+                        
+                        # Detect cropping if:
+                        # 1. Crop region is much smaller than original (significant margin)
+                        # 2. Aspect ratio differs significantly (> 10% difference)
+                        # 3. Coordinates don't span the full image
+                        is_cropped = (
+                            (width_ratio < 0.9 or height_ratio < 0.9) or  # Significant size reduction
+                            (aspect_diff > 0.1) or  # Aspect ratio mismatch
+                            (crop_left > 10 or crop_top > 10)  # Not starting at origin
+                        )
+                        
+                        if is_cropped:
+                            # Crop detected - store crop region metadata
+                            crop_region = {
+                                "offset_x": crop_left,
+                                "offset_y": crop_top,
+                                "width": crop_width,
+                                "height": crop_height,
+                                "detected": True,
+                                "aspect_ratio_original": round(original_aspect, 3),
+                                "aspect_ratio_crop": round(crop_aspect, 3),
+                                "size_ratio_width": round(width_ratio, 3),
+                                "size_ratio_height": round(height_ratio, 3)
+                            }
+                            processed_width = crop_width
+                            processed_height = crop_height
+                            
+                            logger.warning(
+                                f"CROP DETECTED! Original: {original_width}x{original_height} "
+                                f"(aspect {original_aspect:.3f}), "
+                                f"Crop region: {crop_left},{crop_top} to {crop_right},{crop_bottom} "
+                                f"({crop_width}x{crop_height}, aspect {crop_aspect:.3f})"
+                            )
+                        else:
+                            # No cropping detected - coordinates likely match original
+                            crop_region = {
+                                "offset_x": 0,
+                                "offset_y": 0,
+                                "width": original_width,
+                                "height": original_height,
+                                "detected": False
+                            }
                             processed_width = original_width
                             processed_height = original_height
-                            logger.debug(f"Bounding boxes match original dimensions - no resizing detected")
-                        else:
-                            logger.warning(
-                                f"Gemini likely processed image at different size! "
-                                f"Original: {original_width}x{original_height}, "
-                                f"Inferred processed: {processed_width}x{processed_height} "
-                                f"(based on max bbox: {max_x}x{max_y})"
-                            )
+                            logger.debug(f"Bounding boxes match original dimensions - no cropping detected")
                     else:
+                        # Can't determine crop region
+                        crop_region = {
+                            "offset_x": 0,
+                            "offset_y": 0,
+                            "width": original_width,
+                            "height": original_height,
+                            "detected": False
+                        }
                         processed_width = original_width
                         processed_height = original_height
                         logger.warning("Could not infer processed dimensions from bounding boxes, using original")
                 
-                # Store both original and processed dimensions in the response
+                # Store both original and processed dimensions, plus crop metadata
                 parsed_response["_image_info"] = {
                     "original_dimensions": {"width": original_width, "height": original_height},
                     "processed_dimensions": {"width": processed_width, "height": processed_height},
-                    "max_bbox_coords": {"x": max_x, "y": max_y}
+                    "crop_region": crop_region if 'crop_region' in locals() else {
+                        "offset_x": 0,
+                        "offset_y": 0,
+                        "width": original_width,
+                        "height": original_height,
+                        "detected": False
+                    },
+                    "bbox_range": {
+                        "min_x": int(min_x) if min_x != float('inf') else 0,
+                        "min_y": int(min_y) if min_y != float('inf') else 0,
+                        "max_x": int(max_x),
+                        "max_y": int(max_y)
+                    }
                 }
                 
                 # Re-serialize to JSON string
@@ -672,22 +748,40 @@ IMPORTANT:
                 page_schema = self.analyze_form_image(image_path)
                 fields = page_schema.get("fields", [])
                 
-                # Extract image info (processed dimensions) if available
+                # Extract image info (processed dimensions and crop region) if available
                 image_info = page_schema.get("_image_info", {})
                 logger.debug(f"Page {i}: Extracted _image_info: {image_info}")
                 if image_info:
                     processed_dims = image_info.get("processed_dimensions", {})
                     original_dims = image_info.get("original_dimensions", {})
-                    logger.debug(f"Page {i}: processed_dims={processed_dims}, original_dims={original_dims}")
+                    crop_region = image_info.get("crop_region")
+                    logger.debug(f"Page {i}: processed_dims={processed_dims}, original_dims={original_dims}, crop_region={crop_region}")
                     if processed_dims and processed_dims.get("width") and processed_dims.get("height"):
                         # Store processed dimensions for this page
                         image_dimensions[f"page_{i}"]["processed_width"] = processed_dims.get("width")
                         image_dimensions[f"page_{i}"]["processed_height"] = processed_dims.get("height")
-                        logger.info(
-                            f"Page {i}: Processed dimensions inferred as "
-                            f"{processed_dims.get('width')}x{processed_dims.get('height')} "
-                            f"(original: {original_dims.get('width')}x{original_dims.get('height')})"
-                        )
+                        
+                        # Store crop region if available
+                        if crop_region:
+                            image_dimensions[f"page_{i}"]["crop_region"] = crop_region
+                            if crop_region.get("detected"):
+                                logger.info(
+                                    f"Page {i}: Processed dimensions {processed_dims.get('width')}x{processed_dims.get('height')}, "
+                                    f"CROP DETECTED: offset=({crop_region.get('offset_x')},{crop_region.get('offset_y')}), "
+                                    f"size={crop_region.get('width')}x{crop_region.get('height')}"
+                                )
+                            else:
+                                logger.info(
+                                    f"Page {i}: Processed dimensions inferred as "
+                                    f"{processed_dims.get('width')}x{processed_dims.get('height')} "
+                                    f"(original: {original_dims.get('width')}x{original_dims.get('height')}, no crop)"
+                                )
+                        else:
+                            logger.info(
+                                f"Page {i}: Processed dimensions inferred as "
+                                f"{processed_dims.get('width')}x{processed_dims.get('height')} "
+                                f"(original: {original_dims.get('width')}x{original_dims.get('height')})"
+                            )
                     else:
                         logger.warning(f"Page {i}: Processed dimensions missing or invalid in _image_info")
                 else:
