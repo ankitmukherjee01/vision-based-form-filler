@@ -535,7 +535,8 @@ IMPORTANT:
                 # Initialize min/max coordinates for crop detection
                 min_x = min_y = float('inf')
                 max_x = max_y = 0
-                
+                all_coords = []
+
                 if not fields:
                     # No fields extracted, can't infer dimensions
                     logger.warning("No fields in response, cannot infer processed dimensions")
@@ -543,24 +544,52 @@ IMPORTANT:
                     processed_height = original_height
                     crop_region = None
                 else:
-                    # Find min/max bounding box coordinates to detect crop region
+                    # First pass: Collect all coordinates to check for normalization
                     for field in fields:
-                        if not isinstance(field, dict):
-                            continue
-                            
+                        if not isinstance(field, dict): continue
                         bbox = field.get("bbox", [])
                         if bbox and len(bbox) >= 4:
-                            min_x = min(min_x, bbox[0])  # x1 (left edge)
-                            min_y = min(min_y, bbox[1])  # y1 (top edge)
-                            max_x = max(max_x, bbox[2])  # x2 (right edge)
-                            max_y = max(max_y, bbox[3])  # y2 (bottom edge)
-                        
-                        # Check parts too
+                            all_coords.extend(bbox)
                         parts = field.get("parts")
                         if parts and isinstance(parts, list):
                             for part in parts:
-                                if not isinstance(part, dict):
-                                    continue
+                                if isinstance(part, dict) and part.get("bbox"):
+                                    all_coords.extend(part.get("bbox"))
+
+                    # Detect if coordinates are normalized (0-1000)
+                    is_normalized = False
+                    if all_coords:
+                        max_coord_val = max(all_coords)
+                        # If all coords are <= 1000 but image is significantly larger, assuming normalized
+                        if max_coord_val <= 1000 and (original_width > 1000 or original_height > 1000):
+                            logger.info(f"Detected normalized coordinates (0-1000) in response (max val: {max_coord_val}). Scaling to image dimensions ({original_width}x{original_height}).")
+                            is_normalized = True
+                            scale_x = original_width / 1000.0
+                            scale_y = original_height / 1000.0
+                            
+                            # Fix coordinates in place
+                            for field in fields:
+                                if "bbox" in field and field["bbox"]:
+                                    b = field["bbox"]
+                                    field["bbox"] = [int(b[0]*scale_x), int(b[1]*scale_y), int(b[2]*scale_x), int(b[3]*scale_y)]
+                                if "parts" in field and field["parts"]:
+                                    for part in field["parts"]:
+                                        if "bbox" in part and part["bbox"]:
+                                            b = part["bbox"]
+                                            part["bbox"] = [int(b[0]*scale_x), int(b[1]*scale_y), int(b[2]*scale_x), int(b[3]*scale_y)]
+
+                    # Second pass: Find min/max bounding box coordinates to detect crop region (using fixed coords)
+                    for field in fields:
+                        bbox = field.get("bbox", [])
+                        if bbox and len(bbox) >= 4:
+                            min_x = min(min_x, bbox[0])
+                            min_y = min(min_y, bbox[1])
+                            max_x = max(max_x, bbox[2])
+                            max_y = max(max_y, bbox[3])
+                        
+                        parts = field.get("parts")
+                        if parts and isinstance(parts, list):
+                            for part in parts:
                                 part_bbox = part.get("bbox", [])
                                 if part_bbox and len(part_bbox) >= 4:
                                     min_x = min(min_x, part_bbox[0])
@@ -570,37 +599,29 @@ IMPORTANT:
                     
                     # Detect if cropping occurred
                     if max_x > 0 and max_y > 0 and min_x != float('inf'):
-                        # Add a small margin (5%) to account for fields near edges
+                        # Add a small margin (5%)
                         crop_right = int(max_x * 1.05)
                         crop_bottom = int(max_y * 1.05)
-                        crop_left = max(0, int(min_x * 0.95))  # Small margin on left
-                        crop_top = max(0, int(min_y * 0.95))   # Small margin on top
+                        crop_left = max(0, int(min_x * 0.95))
+                        crop_top = max(0, int(min_y * 0.95))
                         
                         crop_width = crop_right - crop_left
                         crop_height = crop_bottom - crop_top
                         
-                        # Check if coordinates suggest cropping/resizing
-                        # If crop region is significantly smaller than original, likely cropped
                         width_ratio = crop_width / original_width if original_width > 0 else 1.0
                         height_ratio = crop_height / original_height if original_height > 0 else 1.0
                         
-                        # Check aspect ratio mismatch (indicates cropping/distortion)
                         original_aspect = original_width / original_height if original_height > 0 else 1.0
                         crop_aspect = crop_width / crop_height if crop_height > 0 else 1.0
                         aspect_diff = abs(original_aspect - crop_aspect)
                         
-                        # Detect cropping if:
-                        # 1. Crop region is much smaller than original (significant margin)
-                        # 2. Aspect ratio differs significantly (> 10% difference)
-                        # 3. Coordinates don't span the full image
+                        # Detect cropping: Removed the logic checking (crop_left > 10) as that triggers false positives on full pages with margins
                         is_cropped = (
-                            (width_ratio < 0.9 or height_ratio < 0.9) or  # Significant size reduction
-                            (aspect_diff > 0.1) or  # Aspect ratio mismatch
-                            (crop_left > 10 or crop_top > 10)  # Not starting at origin
+                            (width_ratio < 0.8 or height_ratio < 0.8) or  # Significant size reduction (relaxed to 0.8)
+                            (aspect_diff > 0.2) # Significant Aspect ratio mismatch
                         )
                         
                         if is_cropped:
-                            # Crop detected - store crop region metadata
                             crop_region = {
                                 "offset_x": crop_left,
                                 "offset_y": crop_top,
@@ -622,7 +643,6 @@ IMPORTANT:
                                 f"({crop_width}x{crop_height}, aspect {crop_aspect:.3f})"
                             )
                         else:
-                            # No cropping detected - coordinates likely match original
                             crop_region = {
                                 "offset_x": 0,
                                 "offset_y": 0,
@@ -634,7 +654,6 @@ IMPORTANT:
                             processed_height = original_height
                             logger.debug(f"Bounding boxes match original dimensions - no cropping detected")
                     else:
-                        # Can't determine crop region
                         crop_region = {
                             "offset_x": 0,
                             "offset_y": 0,
@@ -646,16 +665,12 @@ IMPORTANT:
                         processed_height = original_height
                         logger.warning("Could not infer processed dimensions from bounding boxes, using original")
                 
-                # Store both original and processed dimensions, plus crop metadata
+                # Store info
                 parsed_response["_image_info"] = {
                     "original_dimensions": {"width": original_width, "height": original_height},
                     "processed_dimensions": {"width": processed_width, "height": processed_height},
                     "crop_region": crop_region if 'crop_region' in locals() else {
-                        "offset_x": 0,
-                        "offset_y": 0,
-                        "width": original_width,
-                        "height": original_height,
-                        "detected": False
+                        "offset_x": 0, "offset_y": 0, "width": original_width, "height": original_height, "detected": False
                     },
                     "bbox_range": {
                         "min_x": int(min_x) if min_x != float('inf') else 0,
@@ -669,8 +684,6 @@ IMPORTANT:
                 response_text = json.dumps(parsed_response, ensure_ascii=False)
                 
             except json.JSONDecodeError:
-                # If JSON parsing fails here, continue with original response_text
-                # It will be parsed again later
                 logger.warning("Could not parse response to infer dimensions, will parse later")
             except Exception as e:
                 logger.warning(f"Error inferring processed dimensions: {e}")
@@ -971,4 +984,3 @@ if __name__ == "__main__":
         )
     
     main()
-
