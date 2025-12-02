@@ -1,0 +1,1526 @@
+{
+  "filename": "cms-40b-508c-2025.pdf",
+  "filepath": "forms\\cms-40b-508c-2025.pdf",
+  "total_pages": 3,
+  "total_fields": 47,
+  "pages": [
+    {
+      "page_number": 2,
+      "fields": [
+        {
+          "field_name_raw": "1-1-1",
+          "field_name": "medicare_number",
+          "field_context_on_pdf": "Section 1: Basic information. 1. Medicare Number first 4 characters",
+          "field_context_detected": "2. First name 3. Mailing addr City 4. Phone numb",
+          "field_context_all_directions": {
+            "right": "umber",
+            "top": "2. First name 3. Mailing addr City 4. Phone numb Section 2: E 1. Do you have since you turne",
+            "bottom": "Req Section 1: B 1. Medicare Nu U.S. Department o Centers for Medic"
+          },
+          "field_type": "Text",
+          "field_type_code": 7,
+          "field_value": "",
+          "field_flags": 29360128,
+          "rect": {
+            "x0": 37.95,
+            "y0": 108.22,
+            "x1": 101.23,
+            "y1": 123.25,
+            "width": 63.28,
+            "height": 15.03
+          },
+          "text_format": 0,
+          "text_maxlen": 4,
+          "is_readonly": false,
+          "is_required": false,
+          "is_no_export": false,
+          "button_states": null,
+          "page": 2
+        },
+        {
+          "field_name_raw": "1-1-2",
+          "field_name": "middle_3_characters",
+          "field_context_on_pdf": "middle 3 characters",
+          "field_context_detected": "1. Medicare Nu",
+          "field_context_all_directions": {
+            "left": "1. Medicare Nu",
+            "top": "dress (numbe mber Enrollme e (or did you ned 65? (If y",
+            "bottom": "quest for Basic info umber t of Health and icare & Medica"
+          },
+          "field_type": "Text",
+          "field_type_code": 7,
+          "field_value": "",
+          "field_flags": 29360128,
+          "rect": {
+            "x0": 105.05,
+            "y0": 108.05,
+            "x1": 152.49,
+            "y1": 123.41,
+            "width": 47.44,
+            "height": 15.36
+          },
+          "text_format": 0,
+          "text_maxlen": 3,
+          "is_readonly": false,
+          "is_required": false,
+          "is_no_export": false,
+          "button_states": null,
+          "page": 2
+        },
+        {
+          "field_name_raw": "1-1-3",
+          "field_name": "last_4_characters",
+          "field_context_on_pdf": "last 4 characters",
+          "field_context_detected": "1. Medicare Number",
+          "field_context_all_directions": {
+            "left": "1. Medicare Number",
+            "top": "M ber and street, P ent in Medic ou have) coverag yes complete it",
+            "bottom": "or Enrollme formation d Human Services caid Services"
+          },
+          "field_type": "Text",
+          "field_type_code": 7,
+          "field_value": "",
+          "field_flags": 29360128,
+          "rect": {
+            "x0": 156.99,
+            "y0": 107.55,
+            "x1": 220.11,
+            "y1": 122.91,
+            "width": 63.12,
+            "height": 15.36
+          },
+          "text_format": 0,
+          "text_maxlen": 4,
+          "is_readonly": false,
+          "is_required": false,
+          "is_no_export": false,
+          "button_states": null,
+          "page": 2
+        },
+        {
+          "field_name_raw": "1-2",
+          "field_name": "first_name",
+          "field_context_on_pdf": "2. First name, Middle name, Last name, Suffix",
+          "field_context_detected": "3. Mailing address (number and street, P.O. Box, or route) City State ZIP code 4. Phone number 5. Email address Section 2: Enrollment in Medicare Part B",
+          "field_context_all_directions": {
+            "top": "3. Mailing address (number and street, P.O. Box, or route) City State ZIP code 4. Phone number 5. Email address Section 2: Enrollment in Medicare Part B 1. Do you have (or did you have) coverage through an employer or union group health plan since you turned 65? (If yes, complete item 3.) ......................................................................................................... Yes No Note: If you sign up for Part B, you must pay premiums for every month you have the coverage. 2 Are you currently (or were you) an international volunteer for a non-profit organization that",
+            "bottom": "Request for Enrollment in Medicare Part B (Medical Insurance) Section 1: Basic information 1. Medicare Number 2. First name Middle name Last name Suffix U.S. Department of Health and Human Services Centers for Medicare & Medicaid Services Form Approved OMB No. 0938-1230 Expires: 07/31/2028"
+          },
+          "field_type": "Text",
+          "field_type_code": 7,
+          "field_value": "",
+          "field_flags": 8388608,
+          "rect": {
+            "x0": 36.0,
+            "y0": 140.76,
+            "x1": 575.88,
+            "y1": 156.6,
+            "width": 539.88,
+            "height": 15.84
+          },
+          "text_format": 0,
+          "text_maxlen": 0,
+          "is_readonly": false,
+          "is_required": false,
+          "is_no_export": false,
+          "button_states": null,
+          "page": 2
+        },
+        {
+          "field_name_raw": "1-3-1",
+          "field_name": "mailing_address",
+          "field_context_on_pdf": "3. Mailing address. Number and street, P.O. Box, or route",
+          "field_context_detected": "City State ZIP code 4. Phone number 5. Email address Section 2: Enrollment in Medicare Part B 1. Do you have (or did you have) coverage through an employer or union group health plan since you turned 65? (If yes, complete item 3.) ......................................................................................................... Yes No Note: If you sign up for Part B you must pay premiums for every month you have the coverage",
+          "field_context_all_directions": {
+            "top": "City State ZIP code 4. Phone number 5. Email address Section 2: Enrollment in Medicare Part B 1. Do you have (or did you have) coverage through an employer or union group health plan since you turned 65? (If yes, complete item 3.) ......................................................................................................... Yes No Note: If you sign up for Part B, you must pay premiums for every month you have the coverage. 2. Are you currently (or were you) an international volunteer for a non-profit organization that provided health coverage to you? (If yes, complete item 3.) ................................................................................. Yes No 3. Enter dates of employment (or volunteer work) and health coverage (enter dates as mm/yyyy). Attach a",
+            "bottom": "Request for Enrollment in Medicare Part B (Medical Insurance) Section 1: Basic information 1. Medicare Number 2. First name Middle name Last name Suffix 3. Mailing address (number and street, P.O. Box, or route) U.S. Department of Health and Human Services Centers for Medicare & Medicaid Services Form Approved OMB No. 0938-1230 Expires: 07/31/2028"
+          },
+          "field_type": "Text",
+          "field_type_code": 7,
+          "field_value": "",
+          "field_flags": 8388608,
+          "rect": {
+            "x0": 36.0,
+            "y0": 171.76,
+            "x1": 575.88,
+            "y1": 187.6,
+            "width": 539.88,
+            "height": 15.84
+          },
+          "text_format": 0,
+          "text_maxlen": 0,
+          "is_readonly": false,
+          "is_required": false,
+          "is_no_export": false,
+          "button_states": null,
+          "page": 2
+        },
+        {
+          "field_name_raw": "1-3-2",
+          "field_name": "city",
+          "field_context_on_pdf": "City",
+          "field_context_detected": "C 4",
+          "field_context_all_directions": {
+            "left": "C 4",
+            "right": "State ZIP code",
+            "top": "4. Phone number 5. Email address Section 2: Enrollment in Medicare Part B 1. Do you have (or did you have) coverage through an employer or union gro since you turned 65? (If yes, complete item 3.) ......................................................... Note: If you sign up for Part B, you must pay premiums for every month you 2. Are you currently (or were you) an international volunteer for a non-profit provided health coverage to you? (If yes, complete item 3.) ................................. 3. Enter dates of employment (or volunteer work) and health coverage (ente separate sheet if you need more space. Have your employer fill out the form Information) and return it with your application. Dates you (or your spouse) worked for an employer that provided health cov",
+            "bottom": "Request for Enrollment in Medicare Part B ( Section 1: Basic information 1. Medicare Number 2. First name Middle name Last name 3. Mailing address (number and street, P.O. Box, or route) City U.S. Department of Health and Human Services Centers for Medicare & Medicaid Services"
+          },
+          "field_type": "Text",
+          "field_type_code": 7,
+          "field_value": "",
+          "field_flags": 8388608,
+          "rect": {
+            "x0": 39.0,
+            "y0": 202.2,
+            "x1": 389.88,
+            "y1": 219.04,
+            "width": 350.88,
+            "height": 16.84
+          },
+          "text_format": 0,
+          "text_maxlen": 0,
+          "is_readonly": false,
+          "is_required": false,
+          "is_no_export": false,
+          "button_states": null,
+          "page": 2
+        },
+        {
+          "field_name_raw": "1-3-3",
+          "field_name": "2_letter_abbreviation",
+          "field_context_on_pdf": "State. 2 letter abbreviation",
+          "field_context_detected": "up health .................. have the organizat",
+          "field_context_all_directions": {
+            "right": "ZIP code",
+            "top": "up health .................. have the organizat .................. r dates as CMS-L564",
+            "bottom": "Medica State"
+          },
+          "field_type": "Text",
+          "field_type_code": 7,
+          "field_value": "",
+          "field_flags": 29360128,
+          "rect": {
+            "x0": 405.6,
+            "y0": 201.96,
+            "x1": 437.04,
+            "y1": 217.32,
+            "width": 31.44,
+            "height": 15.36
+          },
+          "text_format": 0,
+          "text_maxlen": 2,
+          "is_readonly": false,
+          "is_required": false,
+          "is_no_export": false,
+          "button_states": null,
+          "page": 2
+        },
+        {
+          "field_name_raw": "1-3-4",
+          "field_name": "zip_code",
+          "field_context_on_pdf": "5 digit ZIP code",
+          "field_context_detected": "State",
+          "field_context_all_directions": {
+            "left": "State",
+            "top": "................. Yes rage. hat ................. Yes /yyyy). Attach a equest for Employm",
+            "bottom": "nsurance) Suffix ZIP code Form App OMB No. 0938 Expires: 07/31"
+          },
+          "field_type": "Text",
+          "field_type_code": 7,
+          "field_value": "",
+          "field_flags": 29360128,
+          "rect": {
+            "x0": 471.0,
+            "y0": 201.96,
+            "x1": 549.72,
+            "y1": 217.32,
+            "width": 78.72,
+            "height": 15.36
+          },
+          "text_format": 1,
+          "text_maxlen": 5,
+          "is_readonly": false,
+          "is_required": false,
+          "is_no_export": false,
+          "button_states": null,
+          "page": 2
+        },
+        {
+          "field_name_raw": "1-4-1",
+          "field_name": "phone_number",
+          "field_context_on_pdf": "4. Phone number. 3 digit area code",
+          "field_context_detected": "4",
+          "field_context_all_directions": {
+            "left": "4",
+            "right": "umber 5. Email",
+            "top": "Section 2 1. Do you hav since you tu Note: If you 2. Are you cu provided hea 3. Enter date separate she Information) Dates you (o Start date:",
+            "bottom": "Re Section 1: 1. Medicare N 2. First name 3. Mailing ad City 4. Phone num p Centers for Med"
+          },
+          "field_type": "Text",
+          "field_type_code": 7,
+          "field_value": "",
+          "field_flags": 29360128,
+          "rect": {
+            "x0": 42.07,
+            "y0": 233.61,
+            "x1": 90.18,
+            "y1": 248.85,
+            "width": 48.11,
+            "height": 15.24
+          },
+          "text_format": 1,
+          "text_maxlen": 3,
+          "is_readonly": false,
+          "is_required": false,
+          "is_no_export": false,
+          "button_states": null,
+          "page": 2
+        },
+        {
+          "field_name_raw": "1-4-2",
+          "field_name": "next_3_digits",
+          "field_context_on_pdf": "next 3 digits",
+          "field_context_detected": "4. Phone nu",
+          "field_context_all_directions": {
+            "left": "4. Phone nu",
+            "right": "5. Email address",
+            "top": "2: Enrollm ave (or did y turned 65? (I u sign up for currently (or ealth covera tes of emplo heet if you ne n) and return (or your spo",
+            "bottom": "equest f 1: Basic in e Number me address (num umber Medicare & Med"
+          },
+          "field_type": "Text",
+          "field_type_code": 7,
+          "field_value": "",
+          "field_flags": 29360128,
+          "rect": {
+            "x0": 93.5,
+            "y0": 233.61,
+            "x1": 140.95,
+            "y1": 248.85,
+            "width": 47.45,
+            "height": 15.24
+          },
+          "text_format": 1,
+          "text_maxlen": 3,
+          "is_readonly": false,
+          "is_required": false,
+          "is_no_export": false,
+          "button_states": null,
+          "page": 2
+        },
+        {
+          "field_name_raw": "1-4-3",
+          "field_name": "last_4_digits",
+          "field_context_on_pdf": "last 4 digits",
+          "field_context_detected": "4. Phone number",
+          "field_context_all_directions": {
+            "left": "4. Phone number",
+            "right": "5. Email address",
+            "top": "ment in Med you have) cove (If yes, complete or Part B, you mu or were you) an rage to you? (If y loyment (or volu need more spac rn it with your a ouse) worked fo E",
+            "bottom": "for Enrollm information mber and street edicaid Services"
+          },
+          "field_type": "Text",
+          "field_type_code": 7,
+          "field_value": "",
+          "field_flags": 29360128,
+          "rect": {
+            "x0": 145.06,
+            "y0": 233.61,
+            "x1": 209.68,
+            "y1": 248.85,
+            "width": 64.62,
+            "height": 15.24
+          },
+          "text_format": 1,
+          "text_maxlen": 4,
+          "is_readonly": false,
+          "is_required": false,
+          "is_no_export": false,
+          "button_states": null,
+          "page": 2
+        },
+        {
+          "field_name_raw": "1-5",
+          "field_name": "email_address",
+          "field_context_on_pdf": "5. Email address",
+          "field_context_detected": "Phone number",
+          "field_context_all_directions": {
+            "left": "Phone number",
+            "top": "e Part B rough an employer or union group health plan 3.) ......................................................................................................... Yes No premiums for every month you have the coverage. tional volunteer for a non-profit organization that mplete item 3.) ................................................................................. Yes No work) and health coverage (enter dates as mm/yyyy). Attach a e your employer fill out the form CMS-L564 (Request for Employment on. mployer that provided health coverage e: Not ended",
+            "bottom": "in Medicare Part B (Medical Insurance) e name Last name Suffix ox, or route) State ZIP code 5. Email address Expires: 07/31/2028"
+          },
+          "field_type": "Text",
+          "field_type_code": 7,
+          "field_value": "",
+          "field_flags": 8388608,
+          "rect": {
+            "x0": 252.96,
+            "y0": 234.92,
+            "x1": 575.28,
+            "y1": 250.76,
+            "width": 322.32,
+            "height": 15.84
+          },
+          "text_format": 0,
+          "text_maxlen": 0,
+          "is_readonly": false,
+          "is_required": false,
+          "is_no_export": false,
+          "button_states": null,
+          "page": 2
+        },
+        {
+          "field_name_raw": "CheckBox1-2-1-1",
+          "field_name": "section_2_enrollment",
+          "field_context_on_pdf": "Section 2: Enrollment in Medicare Part B. 1. Do you have (or did you have) coverage through an employer or union group health plan since you turned 65? (If yes, complete item 3.)  Select here for Yes",
+          "field_context_detected": "Yes No",
+          "field_context_all_directions": {
+            "left": "mployer or union group health plan ...................................................................................... th h th",
+            "right": "Yes No",
+            "top": "... Y Attac for Em rt B?",
+            "bottom": "Suf ode"
+          },
+          "field_type": "CheckBox",
+          "field_type_code": 2,
+          "field_value": "",
+          "field_flags": 0,
+          "rect": {
+            "x0": 503.88,
+            "y0": 316.11,
+            "x1": 519.72,
+            "y1": 331.95,
+            "width": 15.84,
+            "height": 15.84
+          },
+          "is_checked": false,
+          "is_readonly": false,
+          "is_required": false,
+          "is_no_export": false,
+          "button_states": {
+            "normal": [
+              "Yes"
+            ],
+            "down": [
+              "Off",
+              "Yes"
+            ]
+          },
+          "page": 2
+        },
+        {
+          "field_name_raw": "CheckBox1-2-1-2",
+          "field_name": "select_here_for",
+          "field_context_on_pdf": "Select here for No. ",
+          "field_context_detected": "No",
+          "field_context_all_directions": {
+            "left": "or union group health plan ....................................................................... Yes y month you have the coverage",
+            "right": "No",
+            "top": "N a oyme",
+            "bottom": "x"
+          },
+          "field_type": "CheckBox",
+          "field_type_code": 2,
+          "field_value": "",
+          "field_flags": 0,
+          "rect": {
+            "x0": 541.22,
+            "y0": 316.61,
+            "x1": 557.06,
+            "y1": 332.45,
+            "width": 15.84,
+            "height": 15.84
+          },
+          "is_checked": false,
+          "is_readonly": false,
+          "is_required": false,
+          "is_no_export": false,
+          "button_states": {
+            "normal": [
+              "No"
+            ],
+            "down": [
+              "No",
+              "Off"
+            ]
+          },
+          "page": 2
+        },
+        {
+          "field_name_raw": "CheckBox1-2-2-1",
+          "field_name": "are_you_currently",
+          "field_context_on_pdf": "2. Are you currently (or were you) an international volunteer for a non-profit organization that provided health coverage to you? (If yes, complete item 3.) Select here for Yes",
+          "field_context_detected": "Yes No h",
+          "field_context_all_directions": {
+            "left": "teer for a non-profit organization that 3.) ................................................................................ l h d /",
+            "right": "Yes No h",
+            "top": "Attac for Em rt B? ... Y",
+            "bottom": "ode ... Y"
+          },
+          "field_type": "CheckBox",
+          "field_type_code": 2,
+          "field_value": "",
+          "field_flags": 0,
+          "rect": {
+            "x0": 503.88,
+            "y0": 358.44,
+            "x1": 519.72,
+            "y1": 374.28,
+            "width": 15.84,
+            "height": 15.84
+          },
+          "is_checked": false,
+          "is_readonly": false,
+          "is_required": false,
+          "is_no_export": false,
+          "button_states": {
+            "normal": [
+              "Yes"
+            ],
+            "down": [
+              "Off",
+              "Yes"
+            ]
+          },
+          "page": 2
+        },
+        {
+          "field_name_raw": "CheckBox1-2-2-2",
+          "field_name": "select_here_for_2",
+          "field_context_on_pdf": "Select here for No. ",
+          "field_context_detected": "No",
+          "field_context_all_directions": {
+            "left": "a non-profit organization that ....................................................................... Yes ( t d t / ) Att h",
+            "right": "No",
+            "top": "a oyme N",
+            "bottom": "N"
+          },
+          "field_type": "CheckBox",
+          "field_type_code": 2,
+          "field_value": "",
+          "field_flags": 0,
+          "rect": {
+            "x0": 541.22,
+            "y0": 358.94,
+            "x1": 557.06,
+            "y1": 374.78,
+            "width": 15.84,
+            "height": 15.84
+          },
+          "is_checked": false,
+          "is_readonly": false,
+          "is_required": false,
+          "is_no_export": false,
+          "button_states": {
+            "normal": [
+              "No"
+            ],
+            "down": [
+              "No",
+              "Off"
+            ]
+          },
+          "page": 2
+        },
+        {
+          "field_name_raw": "1-2-3-1",
+          "field_name": "enter_dates_of",
+          "field_context_on_pdf": "3. Enter dates of employment (or volunteer work) and health coverage. Dates you (or your spouse) worked for an employer that provided health coverage. Start date. 2 digit month",
+          "field_context_detected": "Dates you ( Start date:",
+          "field_context_all_directions": {
+            "left": "Dates you ( Start date:",
+            "right": "ur spouse) worked for an employer that pro End date:",
+            "top": "worked : health cov : employer plain how orm.) ....... your cove nrolling in the first will start.",
+            "bottom": "number 2: Enro have (or d turned 65 ou sign up u currently health co ates of em sheet if yo on) and re (or your"
+          },
+          "field_type": "Text",
+          "field_type_code": 7,
+          "field_value": "",
+          "field_flags": 29360128,
+          "rect": {
+            "x0": 89.77,
+            "y0": 427.58,
+            "x1": 121.21,
+            "y1": 442.94,
+            "width": 31.44,
+            "height": 15.36
+          },
+          "text_format": 1,
+          "text_maxlen": 2,
+          "is_readonly": false,
+          "is_required": false,
+          "is_no_export": false,
+          "button_states": null,
+          "page": 2
+        },
+        {
+          "field_name_raw": "1-2-3-2",
+          "field_name": "4_digit_year",
+          "field_context_on_pdf": "4 digit year",
+          "field_context_detected": "Dates you (or your Start date:",
+          "field_context_all_directions": {
+            "left": "Dates you (or your Start date:",
+            "right": "ked for an employer that provided health co End date: No",
+            "top": "d as a volunteer overage from em er, health insuran ow and why in th ................................ verage start da in Medicare wh t full month you t. Choose one:",
+            "bottom": "rollment in M r did you have) c 65? (If yes, com up for Part B, yo tly (or were you overage to you? employment (or you need more s return it with yo ur spouse) worke"
+          },
+          "field_type": "Text",
+          "field_type_code": 7,
+          "field_value": "",
+          "field_flags": 29360128,
+          "rect": {
+            "x0": 125.91,
+            "y0": 427.46,
+            "x1": 189.03,
+            "y1": 442.82,
+            "width": 63.12,
+            "height": 15.36
+          },
+          "text_format": 1,
+          "text_maxlen": 4,
+          "is_readonly": false,
+          "is_required": false,
+          "is_no_export": false,
+          "button_states": null,
+          "page": 2
+        },
+        {
+          "field_name_raw": "1-2-3-3",
+          "field_name": "end_date_2",
+          "field_context_on_pdf": "End date. 2 digit month",
+          "field_context_detected": "es you (or your spouse) worked for an emp rt date: End date:",
+          "field_context_all_directions": {
+            "left": "es you (or your spouse) worked for an emp rt date: End date:",
+            "right": "that provided health coverage Not ended",
+            "top": "U.S. : non-profit : r, or other ow, and i .................. ll covered lled in the",
+            "bottom": "5. Email e Part B rough an 3.) ............. premium tional volu mplete ite work) and your emp on. mployer th"
+          },
+          "field_type": "Text",
+          "field_type_code": 7,
+          "field_value": "",
+          "field_flags": 29360128,
+          "rect": {
+            "x0": 255.23,
+            "y0": 427.39,
+            "x1": 286.67,
+            "y1": 442.75,
+            "width": 31.44,
+            "height": 15.36
+          },
+          "text_format": 1,
+          "text_maxlen": 2,
+          "is_readonly": false,
+          "is_required": false,
+          "is_no_export": false,
+          "button_states": null,
+          "page": 2
+        },
+        {
+          "field_name_raw": "1-2-3-4",
+          "field_name": "4_digit_year_2",
+          "field_context_on_pdf": "4 digit year",
+          "field_context_detected": "(or your spouse) worked for an employer th End date:",
+          "field_context_all_directions": {
+            "left": "(or your spouse) worked for an employer th End date:",
+            "right": "health coverage Not ended",
+            "top": "fit organization) er entity asked o include proof o ................................ ed by a group he he group health",
+            "bottom": "il address B n employer or un ................................ ms for every mo olunteer for a no tem 3.) .................. d health coverag mployer fill out t that provided he"
+          },
+          "field_type": "Text",
+          "field_type_code": 7,
+          "field_value": "",
+          "field_flags": 29360128,
+          "rect": {
+            "x0": 291.37,
+            "y0": 427.27,
+            "x1": 354.49,
+            "y1": 442.63,
+            "width": 63.12,
+            "height": 15.36
+          },
+          "text_format": 1,
+          "text_maxlen": 4,
+          "is_readonly": false,
+          "is_required": false,
+          "is_no_export": false,
+          "button_states": null,
+          "page": 2
+        },
+        {
+          "field_name_raw": "CheckBox1-2-3-5",
+          "field_name": "select_here_if",
+          "field_context_on_pdf": "Select here if Not Ended",
+          "field_context_detected": "Not ended",
+          "field_context_all_directions": {
+            "left": "End date:",
+            "right": "Not ended",
+            "top": "N ) N or re or do ......... ealth h plan",
+            "bottom": "nion ......... onth on-pr ......... ge ( he fo ealth"
+          },
+          "field_type": "CheckBox",
+          "field_type_code": 2,
+          "field_value": "",
+          "field_flags": 0,
+          "rect": {
+            "x0": 363.38,
+            "y0": 431.38,
+            "x1": 372.62,
+            "y1": 440.95,
+            "width": 9.23,
+            "height": 9.57
+          },
+          "is_checked": false,
+          "is_readonly": false,
+          "is_required": false,
+          "is_no_export": false,
+          "button_states": {
+            "normal": [
+              "Yes"
+            ],
+            "down": [
+              "Off",
+              "Yes"
+            ]
+          },
+          "page": 2
+        },
+        {
+          "field_name_raw": "1-2-3-6",
+          "field_name": "dates_you_worked",
+          "field_context_on_pdf": "Dates you worked as a volunteer outside the U.S. Start date. 2 digit month",
+          "field_context_detected": "Dates you w Start date:",
+          "field_context_all_directions": {
+            "left": "Dates you w Start date:",
+            "right": "d as a volunteer outside the U.S. End date:",
+            "top": "ealth cov : employer plain how orm.) ....... your cove nrolling in the first will start. st day of t st day of a yyy)",
+            "bottom": "2: Enro have (or d turned 65 ou sign up currently health cov ates of em sheet if yo on) and re (or your : worked a"
+          },
+          "field_type": "Text",
+          "field_type_code": 7,
+          "field_value": "",
+          "field_flags": 29360128,
+          "rect": {
+            "x0": 90.55,
+            "y0": 463.39,
+            "x1": 121.99,
+            "y1": 478.75,
+            "width": 31.44,
+            "height": 15.36
+          },
+          "text_format": 1,
+          "text_maxlen": 2,
+          "is_readonly": false,
+          "is_required": false,
+          "is_no_export": false,
+          "button_states": null,
+          "page": 2
+        },
+        {
+          "field_name_raw": "1-2-3-7",
+          "field_name": "4_digit_year_3",
+          "field_context_on_pdf": "4 digit year",
+          "field_context_detected": "Dates you worked a Start date:",
+          "field_context_all_directions": {
+            "left": "Dates you worked a Start date:",
+            "right": "r outside the U.S. End date: Not",
+            "top": "overage from em er, health insuran w and why in th ............................... verage start da in Medicare whi t full month you t. Choose one: f the month you f any of the 3 mo",
+            "bottom": "rollment in M r did you have) c 65? (If yes, com up for Part B, yo tly (or were you) overage to you? employment (or you need more s return it with yo r spouse) worke d as a volunteer"
+          },
+          "field_type": "Text",
+          "field_type_code": 7,
+          "field_value": "",
+          "field_flags": 29360128,
+          "rect": {
+            "x0": 126.68,
+            "y0": 463.27,
+            "x1": 189.8,
+            "y1": 478.63,
+            "width": 63.12,
+            "height": 15.36
+          },
+          "text_format": 1,
+          "text_maxlen": 4,
+          "is_readonly": false,
+          "is_required": false,
+          "is_no_export": false,
+          "button_states": null,
+          "page": 2
+        },
+        {
+          "field_name_raw": "1-2-3-8",
+          "field_name": "end_date_2_2",
+          "field_context_on_pdf": "End date. 2 digit month",
+          "field_context_detected": "es you worked as a volunteer outside the U rt date: End date:",
+          "field_context_all_directions": {
+            "left": "es you worked as a volunteer outside the U rt date: End date:",
+            "right": "Not ended",
+            "top": "non-profit : r, or other ow, and in .................. ll covered lled in the you enrol",
+            "bottom": "Part B rough an .) ............. premium tional volu mplete ite work) and your emp on. mployer th : U.S."
+          },
+          "field_type": "Text",
+          "field_type_code": 7,
+          "field_value": "",
+          "field_flags": 29360128,
+          "rect": {
+            "x0": 255.55,
+            "y0": 464.02,
+            "x1": 286.99,
+            "y1": 479.38,
+            "width": 31.44,
+            "height": 15.36
+          },
+          "text_format": 1,
+          "text_maxlen": 2,
+          "is_readonly": false,
+          "is_required": false,
+          "is_no_export": false,
+          "button_states": null,
+          "page": 2
+        },
+        {
+          "field_name_raw": "1-2-3-9",
+          "field_name": "4_digit_year_4",
+          "field_context_on_pdf": "4 digit year",
+          "field_context_detected": "worked as a volunteer outside the U.S. End date:",
+          "field_context_all_directions": {
+            "left": "worked as a volunteer outside the U.S. End date:",
+            "right": "Not ended",
+            "top": "fit organization) er entity asked o include proof o ............................... ed by a group he he group health oll. Write the mo",
+            "bottom": "B n employer or un ............................... ms for every mo olunteer for a no tem 3.) .................. d health coverag mployer fill out th that provided he"
+          },
+          "field_type": "Text",
+          "field_type_code": 7,
+          "field_value": "",
+          "field_flags": 29360128,
+          "rect": {
+            "x0": 291.68,
+            "y0": 463.9,
+            "x1": 354.8,
+            "y1": 479.26,
+            "width": 63.12,
+            "height": 15.36
+          },
+          "text_format": 1,
+          "text_maxlen": 4,
+          "is_readonly": false,
+          "is_required": false,
+          "is_no_export": false,
+          "button_states": null,
+          "page": 2
+        },
+        {
+          "field_name_raw": "CheckBox1-2-3-10",
+          "field_name": "select_here_if_2",
+          "field_context_on_pdf": "Select here if Not Ended",
+          "field_context_detected": "Not ended",
+          "field_context_all_directions": {
+            "left": "End date:",
+            "right": "Not ended",
+            "top": ") N or re or do ........ ealth h plan onth",
+            "bottom": "nion ........ onth on-pr ........ ge (e he fo ealth N"
+          },
+          "field_type": "CheckBox",
+          "field_type_code": 2,
+          "field_value": "",
+          "field_flags": 0,
+          "rect": {
+            "x0": 363.72,
+            "y0": 467.05,
+            "x1": 372.95,
+            "y1": 476.62,
+            "width": 9.23,
+            "height": 9.57
+          },
+          "is_checked": false,
+          "is_readonly": false,
+          "is_required": false,
+          "is_no_export": false,
+          "button_states": {
+            "normal": [
+              "Yes"
+            ],
+            "down": [
+              "Off",
+              "Yes"
+            ]
+          },
+          "page": 2
+        },
+        {
+          "field_name_raw": "1-2-3-11",
+          "field_name": "dates_of_health",
+          "field_context_on_pdf": "Dates of health coverage from employer (or non-profit organization).  Start date. 2 digit month",
+          "field_context_detected": "Dates of he Start date:",
+          "field_context_all_directions": {
+            "left": "Dates of he Start date:",
+            "right": "overage from employer (or non profit organ End date:",
+            "top": "employer plain how orm.) ....... your cove nrolling in the first will start. st day of st day of yyy)",
+            "bottom": "have (or d turned 65 ou sign up u currently health co ates of em sheet if yo on) and re (or your : worked : health cov"
+          },
+          "field_type": "Text",
+          "field_type_code": 7,
+          "field_value": "",
+          "field_flags": 29360128,
+          "rect": {
+            "x0": 89.9,
+            "y0": 499.39,
+            "x1": 121.34,
+            "y1": 514.75,
+            "width": 31.44,
+            "height": 15.36
+          },
+          "text_format": 1,
+          "text_maxlen": 2,
+          "is_readonly": false,
+          "is_required": false,
+          "is_no_export": false,
+          "button_states": null,
+          "page": 2
+        },
+        {
+          "field_name_raw": "1-2-3-12",
+          "field_name": "4_digit_year_5",
+          "field_context_on_pdf": "4 digit year",
+          "field_context_detected": "Dates of health cov Start date:",
+          "field_context_all_directions": {
+            "left": "Dates of health cov Start date:",
+            "right": "mployer (or non profit organization) End date: No",
+            "top": "er, health insuran ow and why in th ................................ verage start da in Medicare wh t full month you t. Choose one: f the month you f any of the 3 m",
+            "bottom": "r did you have) c 65? (If yes, com up for Part B, yo tly (or were you) overage to you? employment (or you need more s return it with yo ur spouse) worke d as a volunteer overage from em"
+          },
+          "field_type": "Text",
+          "field_type_code": 7,
+          "field_value": "",
+          "field_flags": 29360128,
+          "rect": {
+            "x0": 126.04,
+            "y0": 499.27,
+            "x1": 189.16,
+            "y1": 514.63,
+            "width": 63.12,
+            "height": 15.36
+          },
+          "text_format": 1,
+          "text_maxlen": 4,
+          "is_readonly": false,
+          "is_required": false,
+          "is_no_export": false,
+          "button_states": null,
+          "page": 2
+        },
+        {
+          "field_name_raw": "1-2-3-13",
+          "field_name": "end_date_2_3",
+          "field_context_on_pdf": "End date. 2 digit month",
+          "field_context_detected": "es of health coverage from employer (or no rt date: End date:",
+          "field_context_all_directions": {
+            "left": "es of health coverage from employer (or no rt date: End date:",
+            "right": "fit organization) Not ended",
+            "top": "r, or other ow, and in .................. ll covered lled in the you enrol",
+            "bottom": "rough an .) ............. premium ional volu mplete ite work) and your emp on. mployer th : U.S. : non-profit"
+          },
+          "field_type": "Text",
+          "field_type_code": 7,
+          "field_value": "",
+          "field_flags": 29360128,
+          "rect": {
+            "x0": 255.9,
+            "y0": 500.02,
+            "x1": 287.34,
+            "y1": 515.38,
+            "width": 31.44,
+            "height": 15.36
+          },
+          "text_format": 1,
+          "text_maxlen": 2,
+          "is_readonly": false,
+          "is_required": false,
+          "is_no_export": false,
+          "button_states": null,
+          "page": 2
+        },
+        {
+          "field_name_raw": "1-2-3-14",
+          "field_name": "4_digit_year_6",
+          "field_context_on_pdf": "4 digit year",
+          "field_context_detected": "ealth coverage from employer (or non profi End date:",
+          "field_context_all_directions": {
+            "left": "ealth coverage from employer (or non profi End date:",
+            "right": "n) Not ended",
+            "top": "er entity asked o include proof o ................................ ed by a group he he group health oll. Write the mo",
+            "bottom": "n employer or un ................................ ms for every mo olunteer for a no tem 3.) .................. d health coverag mployer fill out t that provided he fit organization)"
+          },
+          "field_type": "Text",
+          "field_type_code": 7,
+          "field_value": "",
+          "field_flags": 29360128,
+          "rect": {
+            "x0": 291.04,
+            "y0": 499.9,
+            "x1": 354.16,
+            "y1": 515.26,
+            "width": 63.12,
+            "height": 15.36
+          },
+          "text_format": 1,
+          "text_maxlen": 4,
+          "is_readonly": false,
+          "is_required": false,
+          "is_no_export": false,
+          "button_states": null,
+          "page": 2
+        },
+        {
+          "field_name_raw": "CheckBox1-2-3-15",
+          "field_name": "select_here_if_3",
+          "field_context_on_pdf": "Select here if Not Ended",
+          "field_context_detected": "Not ended",
+          "field_context_all_directions": {
+            "left": "End date:",
+            "right": "Not ended",
+            "top": "or re or do ........ ealth h plan onth",
+            "bottom": "nion ........ onth on-pr ........ ge (e he fo ealth N N )"
+          },
+          "field_type": "CheckBox",
+          "field_type_code": 2,
+          "field_value": "",
+          "field_flags": 0,
+          "rect": {
+            "x0": 363.72,
+            "y0": 503.38,
+            "x1": 372.95,
+            "y1": 512.95,
+            "width": 9.23,
+            "height": 9.57
+          },
+          "is_checked": false,
+          "is_readonly": false,
+          "is_required": false,
+          "is_no_export": false,
+          "button_states": {
+            "normal": [
+              "Yes"
+            ],
+            "down": [
+              "Off",
+              "Yes"
+            ]
+          },
+          "page": 2
+        },
+        {
+          "field_name_raw": "CheckBox1-2-4-1",
+          "field_name": "has_an_employer",
+          "field_context_on_pdf": "4. Has an employer, health insurance provider, or other entity asked or required you to enroll in Part B? Select here for Yes",
+          "field_context_detected": "Yes No",
+          "field_context_all_directions": {
+            "left": "lude proof or documentation ......................................................................................",
+            "right": "Yes No",
+            "top": "mploy your M age to",
+            "bottom": "... Y Attac for Em rt B?"
+          },
+          "field_type": "CheckBox",
+          "field_type_code": 2,
+          "field_value": "",
+          "field_flags": 0,
+          "rect": {
+            "x0": 503.75,
+            "y0": 544.08,
+            "x1": 519.59,
+            "y1": 559.92,
+            "width": 15.84,
+            "height": 15.84
+          },
+          "is_checked": false,
+          "is_readonly": false,
+          "is_required": false,
+          "is_no_export": false,
+          "button_states": {
+            "normal": [
+              "Yes"
+            ],
+            "down": [
+              "Off",
+              "Yes"
+            ]
+          },
+          "page": 2
+        },
+        {
+          "field_name_raw": "CheckBox1-2-4-2",
+          "field_name": "select_here_for_3",
+          "field_context_on_pdf": "Select here for No. ",
+          "field_context_detected": "No",
+          "field_context_all_directions": {
+            "left": "oof or documentation ....................................................................... Yes",
+            "right": "No",
+            "top": "ent dicare tart:",
+            "bottom": "N a loyme"
+          },
+          "field_type": "CheckBox",
+          "field_type_code": 2,
+          "field_value": "",
+          "field_flags": 0,
+          "rect": {
+            "x0": 540.09,
+            "y0": 543.83,
+            "x1": 555.93,
+            "y1": 559.67,
+            "width": 15.84,
+            "height": 15.84
+          },
+          "is_checked": false,
+          "is_readonly": false,
+          "is_required": false,
+          "is_no_export": false,
+          "button_states": {
+            "normal": [
+              "No"
+            ],
+            "down": [
+              "No",
+              "Off"
+            ]
+          },
+          "page": 2
+        },
+        {
+          "field_name_raw": "1-2-4-3",
+          "field_name": "if_yes_explain",
+          "field_context_on_pdf": "If yes, explain how and why in the space below, and include proof or documentation witht his form.",
+          "field_context_detected": "Choose your coverage start date If you’re enrolling in Medicare while you’re still covered by a group health plan based on current employment (or during the first full month you’re not enrolled in the group health plan), you can choose when your Medicare coverage will start. Choose one: The first day of the month you enroll The first day of any of the 3 months after you enroll. Write the month and year you want coverage to start: (mm/yyyy)",
+          "field_context_all_directions": {
+            "top": "1 CMS-40B (07/2025) Choose your coverage start date If you’re enrolling in Medicare while you’re still covered by a group health plan based on current employment (or during the first full month you’re not enrolled in the group health plan), you can choose when your Medicare coverage will start. Choose one: The first day of the month you enroll The first day of any of the 3 months after you enroll. Write the month and year you want coverage to start: (mm/yyyy)",
+            "bottom": "2. Are you currently (or were you) an international volunteer for a non profit organization that provided health coverage to you? (If yes, complete item 3.) ................................................................................. Yes No 3. Enter dates of employment (or volunteer work) and health coverage (enter dates as mm/yyyy). Attach a separate sheet if you need more space. Have your employer fill out the form CMS-L564 (Request for Employment Information) and return it with your application. Dates you (or your spouse) worked for an employer that provided health coverage Start date: End date: Not ended Dates you worked as a volunteer outside the U.S. Start date: End date: Not ended Dates of health coverage from employer (or non-profit organization) Start date: End date: Not ended 4. Has an employer, health insurance provider, or other entity asked or required you to enroll in Part B? (If yes, explain how and why in the space below, and include proof or documentation with this form.) .......................................................................................................................................................................... Yes No"
+          },
+          "field_type": "Text",
+          "field_type_code": 7,
+          "field_value": "",
+          "field_flags": 8392704,
+          "rect": {
+            "x0": 36.0,
+            "y0": 558.24,
+            "x1": 575.88,
+            "y1": 591.02,
+            "width": 539.88,
+            "height": 32.78
+          },
+          "text_format": 0,
+          "text_maxlen": 0,
+          "is_readonly": false,
+          "is_required": false,
+          "is_no_export": false,
+          "button_states": null,
+          "page": 2
+        },
+        {
+          "field_name_raw": "CheckBox1-2-4-4",
+          "field_name": "choose_your_coverage",
+          "field_context_on_pdf": "Choose your coverage start date. If you’re enrolling in Medicare while you’re still covered by a group health plan based on current employment (or during the first full month you’re not enrolled in the group health plan), you can choose when your Medicare coverage will start. Choose one. Select here for The first day of the month you enroll",
+          "field_context_detected": "verage will start. Choose one: The first day of the month you enroll The first day of any of the 3 months after y",
+          "field_context_all_directions": {
+            "right": "verage will start. Choose one: The first day of the month you enroll The first day of any of the 3 months after y",
+            "top": "CMS-4 T (",
+            "bottom": "Date Star Date Star 4. H (If y with Cho If yo (or d cove"
+          },
+          "field_type": "CheckBox",
+          "field_type_code": 2,
+          "field_value": "",
+          "field_flags": 0,
+          "rect": {
+            "x0": 35.41,
+            "y0": 643.33,
+            "x1": 51.25,
+            "y1": 659.17,
+            "width": 15.84,
+            "height": 15.84
+          },
+          "is_checked": false,
+          "is_readonly": false,
+          "is_required": false,
+          "is_no_export": false,
+          "button_states": {
+            "normal": [
+              "month#20you#20enroll"
+            ],
+            "down": [
+              "Off",
+              "month#20you#20enroll"
+            ]
+          },
+          "page": 2
+        },
+        {
+          "field_name_raw": "CheckBox1-2-4-5",
+          "field_name": "select_here_for_4",
+          "field_context_on_pdf": "Select here for The first day of any of the 3 months after you enroll. ",
+          "field_context_detected": "The first day of the month you enroll The first day of any of the 3 months after y (mm/yyyy)",
+          "field_context_all_directions": {
+            "right": "The first day of the month you enroll The first day of any of the 3 months after y (mm/yyyy)",
+            "top": "CMS-4 (",
+            "bottom": "Date Star Date Star 4. H (If y with Cho If yo (or d cove T"
+          },
+          "field_type": "CheckBox",
+          "field_type_code": 2,
+          "field_value": "",
+          "field_flags": 0,
+          "rect": {
+            "x0": 35.5,
+            "y0": 658.33,
+            "x1": 51.34,
+            "y1": 674.17,
+            "width": 15.84,
+            "height": 15.84
+          },
+          "is_checked": false,
+          "is_readonly": false,
+          "is_required": false,
+          "is_no_export": false,
+          "button_states": {
+            "normal": [
+              "after#20you#20enroll"
+            ],
+            "down": [
+              "Off",
+              "after#20you#20enroll"
+            ]
+          },
+          "page": 2
+        },
+        {
+          "field_name_raw": "1-2-4-6",
+          "field_name": "write_the_month",
+          "field_context_on_pdf": "Write the month and year you want coverage to start. 2 digit month",
+          "field_context_detected": "MS-40B (07/2",
+          "field_context_all_directions": {
+            "right": "yyyy)",
+            "top": "MS-40B (07/2",
+            "bottom": "ates of he tart date: Has an e f yes, exp ith this fo hoose yo you’re en or during overage w The first The first (mm/yy"
+          },
+          "field_type": "Text",
+          "field_type_code": 7,
+          "field_value": "",
+          "field_flags": 29360128,
+          "rect": {
+            "x0": 51.37,
+            "y0": 685.38,
+            "x1": 82.81,
+            "y1": 700.74,
+            "width": 31.44,
+            "height": 15.36
+          },
+          "text_format": 1,
+          "text_maxlen": 2,
+          "is_readonly": false,
+          "is_required": false,
+          "is_no_export": false,
+          "button_states": null,
+          "page": 2
+        },
+        {
+          "field_name_raw": "1-2-4-7",
+          "field_name": "4_digit_year_7",
+          "field_context_on_pdf": "4 digit year",
+          "field_context_detected": "(mm/yy",
+          "field_context_all_directions": {
+            "left": "(mm/yy",
+            "top": "7/2025)",
+            "bottom": "health coverage e: employer, healt xplain how and w form.) .................... your coverage enrolling in Medi g the first full mo will start. Choos st day of the mo st day of any of yyyy)"
+          },
+          "field_type": "Text",
+          "field_type_code": 7,
+          "field_value": "",
+          "field_flags": 29360128,
+          "rect": {
+            "x0": 87.51,
+            "y0": 685.26,
+            "x1": 150.63,
+            "y1": 700.62,
+            "width": 63.12,
+            "height": 15.36
+          },
+          "text_format": 1,
+          "text_maxlen": 4,
+          "is_readonly": false,
+          "is_required": false,
+          "is_no_export": false,
+          "button_states": null,
+          "page": 2
+        }
+      ]
+    },
+    {
+      "page_number": 3,
+      "fields": [
+        {
+          "field_name_raw": "Signature-1",
+          "field_name": "signature_of_applicant",
+          "field_context_on_pdf": "Section 3: Signature(s). 1. Signature of applicant",
+          "field_context_detected": "If this form has been signed by mark (X), a witness who knows the person app 3. Name of witness (first and last name) 4. Signature of witness 5 Submit your form by mail or fax Mail or fax your completed, signed form to your local Social Security office. Find SSA gov/locator SIGN",
+          "field_context_all_directions": {
+            "right": "2. Date signed (mm/dd/yyyy)",
+            "top": "If this form has been signed by mark (X), a witness who knows the person app 3. Name of witness (first and last name) 4. Signature of witness 5 Submit your form by mail or fax Mail or fax your completed, signed form to your local Social Security office. Find SSA.gov/locator. SIGN",
+            "bottom": "Section 3: Signature(s) 1. Signature of applicant 2"
+          },
+          "field_type": "Signature",
+          "field_type_code": 6,
+          "field_value": "",
+          "field_flags": 0,
+          "rect": {
+            "x0": 35.0,
+            "y0": 76.52,
+            "x1": 427.88,
+            "y1": 96.32,
+            "width": 392.88,
+            "height": 19.8
+          },
+          "is_readonly": false,
+          "is_required": false,
+          "is_no_export": false,
+          "button_states": null,
+          "page": 3
+        },
+        {
+          "field_name_raw": "2-3-2-1",
+          "field_name": "date_signed_2",
+          "field_context_on_pdf": "2. Date signed. 2 digit month",
+          "field_context_detected": "plying m 5. Date s nd an offi",
+          "field_context_all_directions": {
+            "right": "e signed (mm/dd/yyyy)",
+            "top": "plying m 5. Date s nd an offi",
+            "bottom": "2. Date"
+          },
+          "field_type": "Text",
+          "field_type_code": 7,
+          "field_value": "",
+          "field_flags": 29360128,
+          "rect": {
+            "x0": 430.62,
+            "y0": 77.26,
+            "x1": 462.06,
+            "y1": 92.62,
+            "width": 31.44,
+            "height": 15.36
+          },
+          "text_format": 1,
+          "text_maxlen": 2,
+          "is_readonly": false,
+          "is_required": false,
+          "is_no_export": false,
+          "button_states": null,
+          "page": 3
+        },
+        {
+          "field_name_raw": "2-3-2-2",
+          "field_name": "2_digit_day",
+          "field_context_on_pdf": "2 digit day",
+          "field_context_detected": "2. Date",
+          "field_context_all_directions": {
+            "left": "2. Date",
+            "right": "d (mm/dd/yyyy)",
+            "top": "must als e signed ( ffice near",
+            "bottom": "e signed ("
+          },
+          "field_type": "Text",
+          "field_type_code": 7,
+          "field_value": "",
+          "field_flags": 29360128,
+          "rect": {
+            "x0": 466.14,
+            "y0": 77.26,
+            "x1": 497.58,
+            "y1": 92.62,
+            "width": 31.44,
+            "height": 15.36
+          },
+          "text_format": 1,
+          "text_maxlen": 2,
+          "is_readonly": false,
+          "is_required": false,
+          "is_no_export": false,
+          "button_states": null,
+          "page": 3
+        },
+        {
+          "field_name_raw": "2-3-2-3",
+          "field_name": "4_digit_year_8",
+          "field_context_on_pdf": "4 digit year",
+          "field_context_detected": "2. Date signed",
+          "field_context_all_directions": {
+            "left": "2. Date signed",
+            "right": "y)",
+            "top": "lso sign below: d (mm/dd/yyyy) ar you at",
+            "bottom": "d (mm/dd/yyyy)"
+          },
+          "field_type": "Text",
+          "field_type_code": 7,
+          "field_value": "",
+          "field_flags": 29360128,
+          "rect": {
+            "x0": 501.42,
+            "y0": 77.14,
+            "x1": 564.54,
+            "y1": 92.5,
+            "width": 63.12,
+            "height": 15.36
+          },
+          "text_format": 1,
+          "text_maxlen": 4,
+          "is_readonly": false,
+          "is_required": false,
+          "is_no_export": false,
+          "button_states": null,
+          "page": 3
+        },
+        {
+          "field_name_raw": "2-3-3",
+          "field_name": "if_this_form",
+          "field_context_on_pdf": "If this form has been signed by mark (X), a witness who knows the person applying must also sign. 3. Name of witness ",
+          "field_context_detected": "4. Signature of witness 5. Date signed (mm/dd/yyyy) Submit your form by mail or fax Mail or fax your completed, signed form to your local Social Security office. Find an office near you at SSA.gov/locator. SIGN",
+          "field_context_all_directions": {
+            "top": "4. Signature of witness 5. Date signed (mm/dd/yyyy) Submit your form by mail or fax Mail or fax your completed, signed form to your local Social Security office. Find an office near you at SSA.gov/locator. Privacy Act Statement: Sections 1837 1838 and 1872 of the Social Security Act as amended allow SSA to collect this information SIGN",
+            "bottom": "Section 3: Signature(s) 1. Signature of applicant 2. Date signed (mm/dd/yyyy) If this form has been signed by mark (X), a witness who knows the person applying must also sign below: 3. Name of witness (first and last name) SIGN"
+          },
+          "field_type": "Text",
+          "field_type_code": 7,
+          "field_value": "",
+          "field_flags": 8388608,
+          "rect": {
+            "x0": 36.6,
+            "y0": 139.2,
+            "x1": 573.56,
+            "y1": 159.16,
+            "width": 536.96,
+            "height": 19.96
+          },
+          "text_format": 0,
+          "text_maxlen": 0,
+          "is_readonly": false,
+          "is_required": false,
+          "is_no_export": false,
+          "button_states": null,
+          "page": 3
+        },
+        {
+          "field_name_raw": "Signature-2",
+          "field_name": "signature",
+          "field_context_on_pdf": "4. Signature of witness",
+          "field_context_detected": "Submit your form by mail or fax Mail or fax your completed, signed form to your local Social Security office. Find SSA.gov/locator.",
+          "field_context_all_directions": {
+            "right": "5. Date signed (mm/dd/yyyy)",
+            "top": "Submit your form by mail or fax Mail or fax your completed, signed form to your local Social Security office. Find SSA.gov/locator. Privacy Act Statement: Sections 1837, 1838 and 1872 of the Social Security Act, as amended, allow S Furnishing this information is voluntary. However, failing to provide all or part of the information may decision on any claim filed for medical insurance and/or hospital insurance. ll h f d d l b l f b fi l h",
+            "bottom": "Section 3: Signature(s) 1. Signature of applicant If this form has been signed by mark (X), a witness who knows the person app 3. Name of witness (first and last name) 4. Signature of witness SIGN"
+          },
+          "field_type": "Signature",
+          "field_type_code": 6,
+          "field_value": "",
+          "field_flags": 0,
+          "rect": {
+            "x0": 35.0,
+            "y0": 170.7,
+            "x1": 426.0,
+            "y1": 190.5,
+            "width": 391.0,
+            "height": 19.8
+          },
+          "is_readonly": false,
+          "is_required": false,
+          "is_no_export": false,
+          "button_states": null,
+          "page": 3
+        },
+        {
+          "field_name_raw": "2-5-1",
+          "field_name": "date_signed_2_2",
+          "field_context_on_pdf": "5. Date signed. 2 digit month",
+          "field_context_detected": "nd an offi",
+          "field_context_all_directions": {
+            "right": "e signed (mm/dd/yyyy)",
+            "top": "nd an offi SSA to col ay prevent",
+            "bottom": "2. Date plying m 5. Date s"
+          },
+          "field_type": "Text",
+          "field_type_code": 7,
+          "field_value": "",
+          "field_flags": 29360128,
+          "rect": {
+            "x0": 430.62,
+            "y0": 173.26,
+            "x1": 462.06,
+            "y1": 188.62,
+            "width": 31.44,
+            "height": 15.36
+          },
+          "text_format": 1,
+          "text_maxlen": 2,
+          "is_readonly": false,
+          "is_required": false,
+          "is_no_export": false,
+          "button_states": null,
+          "page": 3
+        },
+        {
+          "field_name_raw": "2-5-2",
+          "field_name": "2_digit_day_2",
+          "field_context_on_pdf": "2 digit day",
+          "field_context_detected": "5. Date",
+          "field_context_all_directions": {
+            "left": "5. Date",
+            "right": "(mm/dd/yyyy)",
+            "top": "ffice near ollect this nt an accur",
+            "bottom": "e signed ( must als e signed ("
+          },
+          "field_type": "Text",
+          "field_type_code": 7,
+          "field_value": "",
+          "field_flags": 29360128,
+          "rect": {
+            "x0": 466.14,
+            "y0": 173.26,
+            "x1": 497.58,
+            "y1": 188.62,
+            "width": 31.44,
+            "height": 15.36
+          },
+          "text_format": 1,
+          "text_maxlen": 2,
+          "is_readonly": false,
+          "is_required": false,
+          "is_no_export": false,
+          "button_states": null,
+          "page": 3
+        },
+        {
+          "field_name_raw": "2-5-3",
+          "field_name": "4_digit_year_9",
+          "field_context_on_pdf": "4 digit year",
+          "field_context_detected": "5. Date signed (",
+          "field_context_all_directions": {
+            "left": "5. Date signed (",
+            "right": "y)",
+            "top": "ar you at s information. urate and timely",
+            "bottom": "d (mm/dd/yyyy) lso sign below: d (mm/dd/yyyy)"
+          },
+          "field_type": "Text",
+          "field_type_code": 7,
+          "field_value": "",
+          "field_flags": 29360128,
+          "rect": {
+            "x0": 501.42,
+            "y0": 173.14,
+            "x1": 564.54,
+            "y1": 188.5,
+            "width": 63.12,
+            "height": 15.36
+          },
+          "text_format": 1,
+          "text_maxlen": 4,
+          "is_readonly": false,
+          "is_required": false,
+          "is_no_export": false,
+          "button_states": null,
+          "page": 3
+        }
+      ]
+    }
+  ]
+}

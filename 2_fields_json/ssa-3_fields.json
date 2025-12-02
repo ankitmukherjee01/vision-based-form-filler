@@ -1,0 +1,1480 @@
+{
+  "filename": "ssa-3.pdf",
+  "filepath": "forms\\ssa-3.pdf",
+  "total_pages": 2,
+  "total_fields": 47,
+  "pages": [
+    {
+      "page_number": 1,
+      "fields": [
+        {
+          "field_name_raw": "topmostSubform[0].BodyPage1[0].P1_NameofWageEarner_FLD[0]",
+          "field_name": "ssn",
+          "field_context_on_pdf": "Form SSA-3 (08-2025) U F Discontinue Prior Editions     SOCIAL SECURITY ADMINISTRATION    MARRIAGE CERTIFICATION     Page 1 of 2 O M B Number 0960-0009 T O E 120/420 SEE PAPERWORK/PRIVACY\rACT NOTICE ON REVERSE. PRINT NAME OF WAGE EARNER OR SELF-EMPLOYED PERSON",
+          "field_context_detected": "I am the spouse of the person named below, who has applied for insurance benefits u Act, as presently amended. NAME OF SPOUSE (First Name) (Maiden Name, if applicable) (Last 1. Indicate whether your present marriage was performed by: Clergyman or Authorized Public Official Other (Explain) 2. Were you married before your present marriage? Yes (If \"Yes,\" give the following information about each of your previous marriages.) No",
+          "field_context_all_directions": {
+            "top": "I am the spouse of the person named below, who has applied for insurance benefits u Act, as presently amended. NAME OF SPOUSE (First Name) (Maiden Name, if applicable) (Last 1. Indicate whether your present marriage was performed by: Clergyman or Authorized Public Official Other (Explain) 2. Were you married before your present marriage? Yes (If \"Yes,\" give the following information about each of your previous marriages.) No PREVIOUS MARRIAGE #1 TO WHOM MARRIED WHEN (MM/DD/YYYY) WHE HOW MARRIAGE ENDED WHEN (MM/DD/YYYY) WHE",
+            "bottom": "Form SSA-3 (08-2025) UF Discontinue Prior Editions Social Security Administration MARRIAGE CERTIFICATION TOE 120/420 PRINT NAME OF WAGE EARNER OR SELF-EMPLOYED PERSON"
+          },
+          "field_type": "Text",
+          "field_type_code": 7,
+          "field_value": "",
+          "field_flags": 8392704,
+          "rect": {
+            "x0": 48.2,
+            "y0": 97.34,
+            "x1": 420.17,
+            "y1": 109.67,
+            "width": 371.96,
+            "height": 12.33
+          },
+          "text_format": 0,
+          "text_maxlen": 0,
+          "is_readonly": false,
+          "is_required": false,
+          "is_no_export": false,
+          "button_states": null,
+          "page": 1
+        },
+        {
+          "field_name_raw": "topmostSubform[0].BodyPage1[0].P1_WageEarnerSSN_FLD[0]",
+          "field_name": "ssn_2",
+          "field_context_on_pdf": "SOCIAL SECURITY NUMBER",
+          "field_context_detected": "under Title II of the Social Security st Name)",
+          "field_context_all_directions": {
+            "top": "under Title II of the Social Security st Name) ERE (City and State) ERE (Ci d S )",
+            "bottom": "Page 1 of 2 OMB No. 0960-0009 SEE PAPERWORK/PRIVACY ACT NOTICE ON REVERSE. SOCIAL SECURITY NUMBER"
+          },
+          "field_type": "Text",
+          "field_type_code": 7,
+          "field_value": "",
+          "field_flags": 8392704,
+          "rect": {
+            "x0": 425.83,
+            "y0": 97.34,
+            "x1": 573.16,
+            "y1": 109.67,
+            "width": 147.33,
+            "height": 12.33
+          },
+          "text_format": 0,
+          "text_maxlen": 0,
+          "is_readonly": false,
+          "is_required": false,
+          "is_no_export": false,
+          "button_states": null,
+          "page": 1
+        },
+        {
+          "field_name_raw": "topmostSubform[0].BodyPage1[0].P1_FirstNameofSpouse_FLD[0]",
+          "field_name": "ssn_3",
+          "field_context_on_pdf": "I am the spouse of the person named below, who has applied for insurance benefits under Title II of the Social Security Act, as presently amended. NAME OF SPOUSE  (First Name)",
+          "field_context_detected": "1. Indicate whether your present marriag Clergyman or Authorized Public O 2. Were you married before your present Yes (If \"Yes,\" give the following information a TO WHOM MARRIED HOW MARRIAGE ENDED",
+          "field_context_all_directions": {
+            "right": "( , pp ) (",
+            "top": "1. Indicate whether your present marriag Clergyman or Authorized Public O 2. Were you married before your present Yes (If \"Yes,\" give the following information a TO WHOM MARRIED HOW MARRIAGE ENDED MARRIAGE PERFORMED BY: Clergyman or Public Official",
+            "bottom": "Form SSA-3 (08-2025) UF Discontinue Prior Editions Social Security Administration MARRIAGE C PRINT NAME OF WAGE EARNER OR S I am the spouse of the person named be Act, as presently amended. NAME OF SPOUSE (First Name)"
+          },
+          "field_type": "Text",
+          "field_type_code": 7,
+          "field_value": "",
+          "field_flags": 8392704,
+          "rect": {
+            "x0": 48.2,
+            "y0": 151.34,
+            "x1": 222.16,
+            "y1": 163.67,
+            "width": 173.96,
+            "height": 12.33
+          },
+          "text_format": 0,
+          "text_maxlen": 0,
+          "is_readonly": false,
+          "is_required": false,
+          "is_no_export": false,
+          "button_states": null,
+          "page": 1
+        },
+        {
+          "field_name_raw": "topmostSubform[0].BodyPage1[0].P1_MaidenName_FLD[0]",
+          "field_name": "maiden_name_if",
+          "field_context_on_pdf": "(Maiden Name, if applicable)",
+          "field_context_detected": "( )",
+          "field_context_all_directions": {
+            "left": "( )",
+            "right": "( )",
+            "top": "ge was performed by: Official Other (Explain) nt marriage? about each of your previous marriages.) No PREVIOUS MARRIAGE #1 WHEN (MM/DD/YYYY) WHEN (MM/DD/YYYY) SPOUSE'S DATE OF BIRTH (or age)",
+            "bottom": "CERTIFICATION TOE 120/420 SELF-EMPLOYED PERSON elow, who has applied for insurance bene (Maiden Name, if applicable)"
+          },
+          "field_type": "Text",
+          "field_type_code": 7,
+          "field_value": "",
+          "field_flags": 8392704,
+          "rect": {
+            "x0": 227.84,
+            "y0": 151.34,
+            "x1": 397.67,
+            "y1": 163.67,
+            "width": 169.83,
+            "height": 12.33
+          },
+          "text_format": 0,
+          "text_maxlen": 0,
+          "is_readonly": false,
+          "is_required": false,
+          "is_no_export": false,
+          "button_states": null,
+          "page": 1
+        },
+        {
+          "field_name_raw": "topmostSubform[0].BodyPage1[0].P1_LastName_FLD[0]",
+          "field_name": "last_name",
+          "field_context_on_pdf": "(Last Name)",
+          "field_context_detected": "( , pp )",
+          "field_context_all_directions": {
+            "left": "( , pp )",
+            "top": "WHERE (City and State) WHERE (City and State) GIVE DATE OF DEATH IF SPOUSE IS DECEASED",
+            "bottom": "Page 1 of 2 OMB No. 0960-0009 0 SEE PAPERWORK/PRIVACY ACT NOTICE ON REVERSE. SOCIAL SECURITY NUMBER nefits under Title II of the Social Security (Last Name)"
+          },
+          "field_type": "Text",
+          "field_type_code": 7,
+          "field_value": "",
+          "field_flags": 8392704,
+          "rect": {
+            "x0": 403.33,
+            "y0": 151.34,
+            "x1": 573.16,
+            "y1": 163.67,
+            "width": 169.83,
+            "height": 12.33
+          },
+          "text_format": 0,
+          "text_maxlen": 0,
+          "is_readonly": false,
+          "is_required": false,
+          "is_no_export": false,
+          "button_states": null,
+          "page": 1
+        },
+        {
+          "field_name_raw": "topmostSubform[0].BodyPage1[0].P1_N1MarriagePerfBy_CB1[0]",
+          "field_name": "indicate_whether_your",
+          "field_context_on_pdf": "1. Indicate whether your present marriage was performed by: Clergyman or Authorized Public Official",
+          "field_context_detected": "Clergyman or Authorized Public Official",
+          "field_context_all_directions": {
+            "right": "Clergyman or Authorized Public Official",
+            "top": ". Wer f \"Ye O WH OW MARR pous f",
+            "bottom": "orm S iscon ocial RINT am th ct, as AME . Indi"
+          },
+          "field_type": "CheckBox",
+          "field_type_code": 2,
+          "field_value": "",
+          "field_flags": 0,
+          "rect": {
+            "x0": 60.07,
+            "y0": 186.7,
+            "x1": 70.07,
+            "y1": 196.7,
+            "width": 10.0,
+            "height": 10.0
+          },
+          "is_checked": false,
+          "is_readonly": false,
+          "is_required": false,
+          "is_no_export": false,
+          "button_states": {
+            "normal": [
+              "1"
+            ],
+            "down": [
+              "1",
+              "Off"
+            ]
+          },
+          "page": 1
+        },
+        {
+          "field_name_raw": "topmostSubform[0].BodyPage1[0].P1_N1MarriagePerfBy_CB2[0]",
+          "field_name": "other",
+          "field_context_on_pdf": "Other  ",
+          "field_context_detected": "Other (Explain)",
+          "field_context_all_directions": {
+            "left": "Clergyman or Authorized Public Official",
+            "right": "Other (Explain)",
+            "top": "ge? ch of VIO W W SE'S D",
+            "bottom": "FIC MPLO o has n Nam erfor"
+          },
+          "field_type": "CheckBox",
+          "field_type_code": 2,
+          "field_value": "",
+          "field_flags": 0,
+          "rect": {
+            "x0": 267.06,
+            "y0": 186.7,
+            "x1": 277.06,
+            "y1": 196.7,
+            "width": 10.0,
+            "height": 10.0
+          },
+          "is_checked": false,
+          "is_readonly": false,
+          "is_required": false,
+          "is_no_export": false,
+          "button_states": {
+            "normal": [
+              "2"
+            ],
+            "down": [
+              "2",
+              "Off"
+            ]
+          },
+          "page": 1
+        },
+        {
+          "field_name_raw": "topmostSubform[0].BodyPage1[0].P1_N1MarriagePerfByCB2_FLD[0]",
+          "field_name": "if_other_is",
+          "field_context_on_pdf": "If other is checked, explain here.",
+          "field_context_detected": "horized Public Official Other (Explain)",
+          "field_context_all_directions": {
+            "left": "horized Public Official Other (Explain)",
+            "top": "marriages.) GE #1 /YYYY) WHERE (City and State) /YYYY) WHERE (City and State) H (or age) GIVE DATE OF DEATH IF SPOUSE IS DECEASED",
+            "bottom": "Page 1 of 2 OMB No. 0960-0009 OE 120/420 SEE PAPERWORK/PRIVACY ACT NOTICE ON REVERSE. SOCIAL SECURITY NUMBER urance benefits under Title II of the Social Security ) (Last Name)"
+          },
+          "field_type": "Text",
+          "field_type_code": 7,
+          "field_value": "",
+          "field_flags": 8388608,
+          "rect": {
+            "x0": 358.34,
+            "y0": 187.34,
+            "x1": 573.16,
+            "y1": 199.67,
+            "width": 214.83,
+            "height": 12.33
+          },
+          "text_format": 0,
+          "text_maxlen": 0,
+          "is_readonly": false,
+          "is_required": false,
+          "is_no_export": false,
+          "button_states": null,
+          "page": 1
+        },
+        {
+          "field_name_raw": "topmostSubform[0].BodyPage1[0].P1_N2MarriedPrev_CB1[0]",
+          "field_name": "were_you_married",
+          "field_context_on_pdf": "2. Were you married before your present marriage? Yes (If ''yes'', give the following information about each of your previous marriages.)",
+          "field_context_detected": "Yes",
+          "field_context_all_directions": {
+            "right": "Yes",
+            "top": "f \"Ye O WH OW MARR pous f non O WH",
+            "bottom": "orm S iscon ocial RINT am th ct, as AME . Indi . Wer"
+          },
+          "field_type": "CheckBox",
+          "field_type_code": 2,
+          "field_value": "",
+          "field_flags": 0,
+          "rect": {
+            "x0": 60.07,
+            "y0": 222.7,
+            "x1": 70.07,
+            "y1": 232.7,
+            "width": 10.0,
+            "height": 10.0
+          },
+          "is_checked": false,
+          "is_readonly": false,
+          "is_required": false,
+          "is_no_export": false,
+          "button_states": {
+            "normal": [
+              "1"
+            ],
+            "down": [
+              "1",
+              "Off"
+            ]
+          },
+          "page": 1
+        },
+        {
+          "field_name_raw": "topmostSubform[0].BodyPage1[0].P1_N2MarriedPrev_CB2[0]",
+          "field_name": "no",
+          "field_context_on_pdf": "No",
+          "field_context_detected": "No",
+          "field_context_all_directions": {
+            "left": "Yes",
+            "right": "No",
+            "top": "ch of VIO W W SE'S D VIO W",
+            "bottom": "FIC MPLO o has n Nam erfor ge?"
+          },
+          "field_type": "CheckBox",
+          "field_type_code": 2,
+          "field_value": "",
+          "field_flags": 0,
+          "rect": {
+            "x0": 267.06,
+            "y0": 222.7,
+            "x1": 277.06,
+            "y1": 232.7,
+            "width": 10.0,
+            "height": 10.0
+          },
+          "is_checked": false,
+          "is_readonly": false,
+          "is_required": false,
+          "is_no_export": false,
+          "button_states": {
+            "normal": [
+              "2"
+            ],
+            "down": [
+              "2",
+              "Off"
+            ]
+          },
+          "page": 1
+        },
+        {
+          "field_name_raw": "topmostSubform[0].BodyPage1[0].P1_Marr1Whom_FLD[0]",
+          "field_name": "previous_marriage_number",
+          "field_context_on_pdf": "PREVIOUS MARRIAGE number 1 TO WHOM MARRIED",
+          "field_context_detected": "HOW MARRIAGE ENDED MARRIAGE PERFORMED BY: Clergyman or Public Official Other (Explain in \"REMARKS\") SPOUSE'S Spouse's Social Security Number (If none or unknown, so indicate) PREVIO TO WHOM MARRIED",
+          "field_context_all_directions": {
+            "right": "( ) ( y",
+            "top": "HOW MARRIAGE ENDED MARRIAGE PERFORMED BY: Clergyman or Public Official Other (Explain in \"REMARKS\") SPOUSE'S Spouse's Social Security Number (If none or unknown, so indicate) PREVIO TO WHOM MARRIED HOW MARRIAGE ENDED MARRIAGE PERFORMED BY: SPOUSE'S",
+            "bottom": "PRINT NAME OF WAGE EARNER OR SELF EMPL I am the spouse of the person named below, who ha Act, as presently amended. NAME OF SPOUSE (First Name) (Maiden Na 1. Indicate whether your present marriage was perfo Clergyman or Authorized Public Official 2. Were you married before your present marriage? Yes (If \"Yes,\" give the following information about each o PREVIO TO WHOM MARRIED"
+          },
+          "field_type": "Text",
+          "field_type_code": 7,
+          "field_value": "",
+          "field_flags": 8392704,
+          "rect": {
+            "x0": 47.83,
+            "y0": 290.83,
+            "x1": 271.67,
+            "y1": 303.17,
+            "width": 223.83,
+            "height": 12.33
+          },
+          "text_format": 0,
+          "text_maxlen": 0,
+          "is_readonly": false,
+          "is_required": false,
+          "is_no_export": false,
+          "button_states": null,
+          "page": 1
+        },
+        {
+          "field_name_raw": "topmostSubform[0].BodyPage1[0].P1_Marr1When_FLD[0]",
+          "field_name": "when_m_m",
+          "field_context_on_pdf": "WHEN  (M M/D D/Y Y Y Y)",
+          "field_context_detected": "WHEN (MM/DD/YYYY) S DATE OF BIRTH (or age) IOUS MARRIAGE #2 WHEN (MM/DD/YYYY)",
+          "field_context_all_directions": {
+            "right": "( y )",
+            "top": "WHEN (MM/DD/YYYY) S DATE OF BIRTH (or age) IOUS MARRIAGE #2 WHEN (MM/DD/YYYY) WHEN (MM/DD/YYYY) S DATE OF BIRTH (or age)",
+            "bottom": "PLOYED PERSON has applied for insurance bene Name, if applicable) formed by: Other (Explain) ? of your previous marriages.) No IOUS MARRIAGE #1 WHEN (MM/DD/YYYY)"
+          },
+          "field_type": "Text",
+          "field_type_code": 7,
+          "field_value": "",
+          "field_flags": 8388608,
+          "rect": {
+            "x0": 277.34,
+            "y0": 290.83,
+            "x1": 397.67,
+            "y1": 303.17,
+            "width": 120.33,
+            "height": 12.33
+          },
+          "text_format": 0,
+          "text_maxlen": 0,
+          "is_readonly": false,
+          "is_required": false,
+          "is_no_export": false,
+          "button_states": null,
+          "page": 1
+        },
+        {
+          "field_name_raw": "topmostSubform[0].BodyPage1[0].P1_Marr1Where_FLD[0]",
+          "field_name": "state",
+          "field_context_on_pdf": "WHERE  (City and State)",
+          "field_context_detected": "( )",
+          "field_context_all_directions": {
+            "left": "( )",
+            "top": "WHERE (City and State) GIVE DATE OF DEATH IF SPOUSE IS DECEASED WHERE (City and State) WHERE (City and State) GIVE DATE OF DEATH IF SPOUSE IS DECEASED",
+            "bottom": "SOCIAL SECURITY NUMBER nefits under Title II of the Social Security (Last Name) WHERE (City and State)"
+          },
+          "field_type": "Text",
+          "field_type_code": 7,
+          "field_value": "",
+          "field_flags": 8392704,
+          "rect": {
+            "x0": 403.33,
+            "y0": 290.83,
+            "x1": 573.16,
+            "y1": 303.17,
+            "width": 169.83,
+            "height": 12.33
+          },
+          "text_format": 0,
+          "text_maxlen": 0,
+          "is_readonly": false,
+          "is_required": false,
+          "is_no_export": false,
+          "button_states": null,
+          "page": 1
+        },
+        {
+          "field_name_raw": "topmostSubform[0].BodyPage1[0].P1_Marr1Ended_FLD[0]",
+          "field_name": "how_marriage_ended",
+          "field_context_on_pdf": "HOW MARRIAGE ENDED",
+          "field_context_detected": "MARRIAGE PERFORMED BY: Clergyman or Public Official Other (Explain in \"REMARKS\") SPOUSE'S Spouse's Social Security Number (If none or unknown, so indicate) PREVIO TO WHOM MARRIED HOW MARRIAGE ENDED",
+          "field_context_all_directions": {
+            "right": "( ) ( y",
+            "top": "MARRIAGE PERFORMED BY: Clergyman or Public Official Other (Explain in \"REMARKS\") SPOUSE'S Spouse's Social Security Number (If none or unknown, so indicate) PREVIO TO WHOM MARRIED HOW MARRIAGE ENDED MARRIAGE PERFORMED BY: Clergyman or Public Official Other (Explain in \"REMARKS\") SPOUSE'S S ' S i l S it N b",
+            "bottom": "I am the spouse of the person named below, who ha Act, as presently amended. NAME OF SPOUSE (First Name) (Maiden Na 1. Indicate whether your present marriage was perfo Clergyman or Authorized Public Official 2. Were you married before your present marriage? Yes (If \"Yes,\" give the following information about each o PREVIO TO WHOM MARRIED HOW MARRIAGE ENDED"
+          },
+          "field_type": "Text",
+          "field_type_code": 7,
+          "field_value": "",
+          "field_flags": 8392704,
+          "rect": {
+            "x0": 47.83,
+            "y0": 322.33,
+            "x1": 271.67,
+            "y1": 334.66,
+            "width": 223.83,
+            "height": 12.33
+          },
+          "text_format": 0,
+          "text_maxlen": 0,
+          "is_readonly": false,
+          "is_required": false,
+          "is_no_export": false,
+          "button_states": null,
+          "page": 1
+        },
+        {
+          "field_name_raw": "topmostSubform[0].BodyPage1[0].P1_Marr1EndedWhen_FLD[0]",
+          "field_name": "when_m_m_2",
+          "field_context_on_pdf": "WHEN  (M M/D D/Y Y Y Y)",
+          "field_context_detected": "S DATE OF BIRTH (or age) IOUS MARRIAGE #2 WHEN (MM/DD/YYYY) WHEN (MM/DD/YYYY)",
+          "field_context_all_directions": {
+            "right": "( y )",
+            "top": "S DATE OF BIRTH (or age) IOUS MARRIAGE #2 WHEN (MM/DD/YYYY) WHEN (MM/DD/YYYY) S DATE OF BIRTH (or age)",
+            "bottom": "has applied for insurance bene Name, if applicable) formed by: Other (Explain) ? of your previous marriages.) No IOUS MARRIAGE #1 WHEN (MM/DD/YYYY) WHEN (MM/DD/YYYY)"
+          },
+          "field_type": "Text",
+          "field_type_code": 7,
+          "field_value": "",
+          "field_flags": 8388608,
+          "rect": {
+            "x0": 277.34,
+            "y0": 322.33,
+            "x1": 397.67,
+            "y1": 334.66,
+            "width": 120.33,
+            "height": 12.33
+          },
+          "text_format": 0,
+          "text_maxlen": 0,
+          "is_readonly": false,
+          "is_required": false,
+          "is_no_export": false,
+          "button_states": null,
+          "page": 1
+        },
+        {
+          "field_name_raw": "topmostSubform[0].BodyPage1[0].P1_Marr1EndedWhere_FLD[0]",
+          "field_name": "state_2",
+          "field_context_on_pdf": "WHERE  (City and State)",
+          "field_context_detected": "( )",
+          "field_context_all_directions": {
+            "left": "( )",
+            "top": "GIVE DATE OF DEATH IF SPOUSE IS DECEASED WHERE (City and State) WHERE (City and State) GIVE DATE OF DEATH IF SPOUSE IS DECEASED",
+            "bottom": "nefits under Title II of the Social Security (Last Name) WHERE (City and State) WHERE (City and State)"
+          },
+          "field_type": "Text",
+          "field_type_code": 7,
+          "field_value": "",
+          "field_flags": 8392704,
+          "rect": {
+            "x0": 403.33,
+            "y0": 322.33,
+            "x1": 573.16,
+            "y1": 334.66,
+            "width": 169.83,
+            "height": 12.33
+          },
+          "text_format": 0,
+          "text_maxlen": 0,
+          "is_readonly": false,
+          "is_required": false,
+          "is_no_export": false,
+          "button_states": null,
+          "page": 1
+        },
+        {
+          "field_name_raw": "topmostSubform[0].BodyPage1[0].P1_Marr1PerfBy_CB1[0]",
+          "field_name": "marriage_performed_by",
+          "field_context_on_pdf": "MARRIAGE PERFORMED BY: Clergyman or Public Official",
+          "field_context_detected": "RIAGE PERFORMED BY: Clergyman or Public Official O S SPOUSE S",
+          "field_context_all_directions": {
+            "left": "MAR",
+            "right": "RIAGE PERFORMED BY: Clergyman or Public Official O S SPOUSE S",
+            "top": "pouse none O WH OW M ARRI pouse none EMAR",
+            "bottom": "Indic C Were \"Yes O WH OW M ARRI"
+          },
+          "field_type": "CheckBox",
+          "field_type_code": 2,
+          "field_value": "",
+          "field_flags": 0,
+          "rect": {
+            "x0": 64.57,
+            "y0": 353.23,
+            "x1": 74.57,
+            "y1": 363.23,
+            "width": 10.0,
+            "height": 10.0
+          },
+          "is_checked": false,
+          "is_readonly": false,
+          "is_required": false,
+          "is_no_export": false,
+          "button_states": {
+            "normal": [
+              "1"
+            ],
+            "down": [
+              "1",
+              "Off"
+            ]
+          },
+          "page": 1
+        },
+        {
+          "field_name_raw": "topmostSubform[0].BodyPage1[0].P1_Marr1PerfBy_CB2[0]",
+          "field_name": "other_explain_in",
+          "field_context_on_pdf": "Other (Explain in \"REMARKS\")",
+          "field_context_detected": "Clergyman or Public Official Other (Explain in \"REMARKS\")",
+          "field_context_all_directions": {
+            "right": "Clergyman or Public Official Other (Explain in \"REMARKS\")",
+            "top": "pouse none O WH OW M ARRI pouse none EMAR",
+            "bottom": "Indic C Were \"Yes O WH OW M ARRI"
+          },
+          "field_type": "CheckBox",
+          "field_type_code": 2,
+          "field_value": "",
+          "field_flags": 0,
+          "rect": {
+            "x0": 64.57,
+            "y0": 366.7,
+            "x1": 74.57,
+            "y1": 376.7,
+            "width": 10.0,
+            "height": 10.0
+          },
+          "is_checked": false,
+          "is_readonly": false,
+          "is_required": false,
+          "is_no_export": false,
+          "button_states": {
+            "normal": [
+              "2"
+            ],
+            "down": [
+              "2",
+              "Off"
+            ]
+          },
+          "page": 1
+        },
+        {
+          "field_name_raw": "topmostSubform[0].BodyPage1[0].P1_Marr1SpouseDOB_FLD[0]",
+          "field_name": "date_of_birth",
+          "field_context_on_pdf": "SPOUSE'S DATE OF BIRTH  (or age)",
+          "field_context_detected": "Clergyman or Public Official Other (Explain in \"REMARKS\")",
+          "field_context_all_directions": {
+            "left": "Clergyman or Public Official Other (Explain in \"REMARKS\")",
+            "right": "IS DECEASED",
+            "top": "PREVIOUS MARRIAGE #2 WHEN (MM/DD/YYYY) WHEN (MM/DD/YYYY) SPOUSE'S DATE OF BIRTH (or age) m for information about any other previous",
+            "bottom": "ge was performed by: Official Other (Explain) nt marriage? about each of your previous marriages.) No PREVIOUS MARRIAGE #1 WHEN (MM/DD/YYYY) WHEN (MM/DD/YYYY) SPOUSE'S DATE OF BIRTH (or age)"
+          },
+          "field_type": "Text",
+          "field_type_code": 7,
+          "field_value": "",
+          "field_flags": 8388608,
+          "rect": {
+            "x0": 227.84,
+            "y0": 362.83,
+            "x1": 397.67,
+            "y1": 379.67,
+            "width": 169.83,
+            "height": 16.83
+          },
+          "text_format": 0,
+          "text_maxlen": 0,
+          "is_readonly": false,
+          "is_required": false,
+          "is_no_export": false,
+          "button_states": null,
+          "page": 1
+        },
+        {
+          "field_name_raw": "topmostSubform[0].BodyPage1[0].P1_Marr1SpouseDOD_FLD[0]",
+          "field_name": "give_date_of",
+          "field_context_on_pdf": "GIVE DATE OF DEATH IF SPOUSE IS DECEASED",
+          "field_context_detected": "l KS\")",
+          "field_context_all_directions": {
+            "left": "l KS\")",
+            "top": "WHERE (City and State) WHERE (City and State) GIVE DATE OF DEATH IF SPOUSE IS DECEASED us marriages, if necessary)",
+            "bottom": "WHERE (City and State) WHERE (City and State) GIVE DATE OF DEATH IF SPOUSE IS DECEASED"
+          },
+          "field_type": "Text",
+          "field_type_code": 7,
+          "field_value": "",
+          "field_flags": 8388608,
+          "rect": {
+            "x0": 403.33,
+            "y0": 362.83,
+            "x1": 573.16,
+            "y1": 379.67,
+            "width": 169.83,
+            "height": 16.83
+          },
+          "text_format": 0,
+          "text_maxlen": 0,
+          "is_readonly": false,
+          "is_required": false,
+          "is_no_export": false,
+          "button_states": null,
+          "page": 1
+        },
+        {
+          "field_name_raw": "topmostSubform[0].BodyPage1[0].P1_Marr1SpouseSSN_FLD[0]",
+          "field_name": "ssn_4",
+          "field_context_on_pdf": "Spouse's Social Security Number  \r(If none or unknown, so indicate)",
+          "field_context_detected": "Spouse's Social Security Number (If none or unknown, so indicate)",
+          "field_context_all_directions": {
+            "left": "Spouse's Social Security Number (If none or unknown, so indicate)",
+            "top": "PREVIOUS MARRIAGE #2 WHEN (MM/DD/YYYY) WHERE (City and State) WHEN (MM/DD/YYYY) WHERE (City and State) SPOUSE'S DATE OF BIRTH (or age) GIVE DATE OF DEATH IF SPOUSE IS DECEASED m for information about any other previous marriages, if necessary)",
+            "bottom": "Official Other (Explain) nt marriage? about each of your previous marriages.) No PREVIOUS MARRIAGE #1 WHEN (MM/DD/YYYY) WHERE (City and State) WHEN (MM/DD/YYYY) WHERE (City and State) SPOUSE'S DATE OF BIRTH (or age) GIVE DATE OF DEATH IF SPOUSE IS DECEASED"
+          },
+          "field_type": "Text",
+          "field_type_code": 7,
+          "field_value": "",
+          "field_flags": 8392704,
+          "rect": {
+            "x0": 227.84,
+            "y0": 385.33,
+            "x1": 573.16,
+            "y1": 402.17,
+            "width": 345.33,
+            "height": 16.83
+          },
+          "text_format": 0,
+          "text_maxlen": 0,
+          "is_readonly": false,
+          "is_required": false,
+          "is_no_export": false,
+          "button_states": null,
+          "page": 1
+        },
+        {
+          "field_name_raw": "topmostSubform[0].BodyPage1[0].P1_Marr2Whom_FLD[0]",
+          "field_name": "previous_marriage_number_2",
+          "field_context_on_pdf": "PREVIOUS MARRIAGE  number 2 TO WHOM MARRIED",
+          "field_context_detected": "HOW MARRIAGE ENDED MARRIAGE PERFORMED BY: Clergyman or Public Official Other (Explain in \"REMARKS\") SPOUSE'S Spouse's Social Security Number (If none or unknown, so indicate) REMARKS: (Use this space of this form for informa",
+          "field_context_all_directions": {
+            "right": "( ) ( y",
+            "top": "HOW MARRIAGE ENDED MARRIAGE PERFORMED BY: Clergyman or Public Official Other (Explain in \"REMARKS\") SPOUSE'S Spouse's Social Security Number (If none or unknown, so indicate) REMARKS: (Use this space of this form for informa",
+            "bottom": "(If \"Yes,\" give the following information about each o PREVIO TO WHOM MARRIED HOW MARRIAGE ENDED MARRIAGE PERFORMED BY: Clergyman or Public Official Other (Explain in \"REMARKS\") SPOUSE'S Spouse's Social Security Number (If none or unknown, so indicate) PREVIO TO WHOM MARRIED"
+          },
+          "field_type": "Text",
+          "field_type_code": 7,
+          "field_value": "",
+          "field_flags": 8392704,
+          "rect": {
+            "x0": 47.83,
+            "y0": 439.34,
+            "x1": 271.67,
+            "y1": 451.67,
+            "width": 223.83,
+            "height": 12.33
+          },
+          "text_format": 0,
+          "text_maxlen": 0,
+          "is_readonly": false,
+          "is_required": false,
+          "is_no_export": false,
+          "button_states": null,
+          "page": 1
+        },
+        {
+          "field_name_raw": "topmostSubform[0].BodyPage1[0].P1_Marr2When_FLD[0]",
+          "field_name": "when_m_m_3",
+          "field_context_on_pdf": "WHEN  (M M/D D/Y Y Y Y)",
+          "field_context_detected": "WHEN (MM/DD/YYYY) S DATE OF BIRTH (or age) ation about any other previous",
+          "field_context_all_directions": {
+            "right": "( y )",
+            "top": "WHEN (MM/DD/YYYY) S DATE OF BIRTH (or age) ation about any other previous",
+            "bottom": "of your previous marriages.) IOUS MARRIAGE #1 WHEN (MM/DD/YYYY) WHEN (MM/DD/YYYY) S DATE OF BIRTH (or age) IOUS MARRIAGE #2 WHEN (MM/DD/YYYY)"
+          },
+          "field_type": "Text",
+          "field_type_code": 7,
+          "field_value": "",
+          "field_flags": 8388608,
+          "rect": {
+            "x0": 277.34,
+            "y0": 439.34,
+            "x1": 397.67,
+            "y1": 451.67,
+            "width": 120.33,
+            "height": 12.33
+          },
+          "text_format": 0,
+          "text_maxlen": 0,
+          "is_readonly": false,
+          "is_required": false,
+          "is_no_export": false,
+          "button_states": null,
+          "page": 1
+        },
+        {
+          "field_name_raw": "topmostSubform[0].BodyPage1[0].P1_Marr2Where_FLD[0]",
+          "field_name": "state_3",
+          "field_context_on_pdf": "WHERE  (City and State)",
+          "field_context_detected": "( )",
+          "field_context_all_directions": {
+            "left": "( )",
+            "top": "WHERE (City and State) GIVE DATE OF DEATH IF SPOUSE IS DECEASED us marriages, if necessary)",
+            "bottom": "WHERE (City and State) WHERE (City and State) GIVE DATE OF DEATH IF SPOUSE IS DECEASED WHERE (City and State)"
+          },
+          "field_type": "Text",
+          "field_type_code": 7,
+          "field_value": "",
+          "field_flags": 8392704,
+          "rect": {
+            "x0": 403.34,
+            "y0": 439.34,
+            "x1": 573.16,
+            "y1": 451.67,
+            "width": 169.83,
+            "height": 12.33
+          },
+          "text_format": 0,
+          "text_maxlen": 0,
+          "is_readonly": false,
+          "is_required": false,
+          "is_no_export": false,
+          "button_states": null,
+          "page": 1
+        },
+        {
+          "field_name_raw": "topmostSubform[0].BodyPage1[0].P1_Marr2Ended_FLD[0]",
+          "field_name": "how_marriage_ended_2",
+          "field_context_on_pdf": "HOW MARRIAGE ENDED",
+          "field_context_detected": "MARRIAGE PERFORMED BY: Clergyman or Public Official Other (Explain in \"REMARKS\") SPOUSE'S Spouse's Social Security Number (If none or unknown, so indicate) REMARKS: (Use this space of this form for informa",
+          "field_context_all_directions": {
+            "right": "( ) ( y",
+            "top": "MARRIAGE PERFORMED BY: Clergyman or Public Official Other (Explain in \"REMARKS\") SPOUSE'S Spouse's Social Security Number (If none or unknown, so indicate) REMARKS: (Use this space of this form for informa",
+            "bottom": "TO WHOM MARRIED HOW MARRIAGE ENDED MARRIAGE PERFORMED BY: Clergyman or Public Official Other (Explain in \"REMARKS\") SPOUSE'S Spouse's Social Security Number (If none or unknown, so indicate) PREVIO TO WHOM MARRIED HOW MARRIAGE ENDED"
+          },
+          "field_type": "Text",
+          "field_type_code": 7,
+          "field_value": "",
+          "field_flags": 8392704,
+          "rect": {
+            "x0": 47.83,
+            "y0": 470.83,
+            "x1": 271.67,
+            "y1": 483.17,
+            "width": 223.83,
+            "height": 12.33
+          },
+          "text_format": 0,
+          "text_maxlen": 0,
+          "is_readonly": false,
+          "is_required": false,
+          "is_no_export": false,
+          "button_states": null,
+          "page": 1
+        },
+        {
+          "field_name_raw": "topmostSubform[0].BodyPage1[0].P1_Marr2EndedWhen_FLD[0]",
+          "field_name": "when_m_m_4",
+          "field_context_on_pdf": "WHEN  (M M/D D/Y Y Y Y)",
+          "field_context_detected": "S DATE OF BIRTH (or age) ation about any other previous",
+          "field_context_all_directions": {
+            "right": "( y )",
+            "top": "S DATE OF BIRTH (or age) ation about any other previous",
+            "bottom": "WHEN (MM/DD/YYYY) WHEN (MM/DD/YYYY) S DATE OF BIRTH (or age) IOUS MARRIAGE #2 WHEN (MM/DD/YYYY) WHEN (MM/DD/YYYY)"
+          },
+          "field_type": "Text",
+          "field_type_code": 7,
+          "field_value": "",
+          "field_flags": 8388608,
+          "rect": {
+            "x0": 277.34,
+            "y0": 470.83,
+            "x1": 397.67,
+            "y1": 483.17,
+            "width": 120.33,
+            "height": 12.33
+          },
+          "text_format": 0,
+          "text_maxlen": 0,
+          "is_readonly": false,
+          "is_required": false,
+          "is_no_export": false,
+          "button_states": null,
+          "page": 1
+        },
+        {
+          "field_name_raw": "topmostSubform[0].BodyPage1[0].P1_Marr2EndedWhere_FLD[0]",
+          "field_name": "state_4",
+          "field_context_on_pdf": "WHERE  (City and State)",
+          "field_context_detected": "( )",
+          "field_context_all_directions": {
+            "left": "( )",
+            "top": "GIVE DATE OF DEATH IF SPOUSE IS DECEASED us marriages, if necessary)",
+            "bottom": "WHERE (City and State) WHERE (City and State) GIVE DATE OF DEATH IF SPOUSE IS DECEASED WHERE (City and State) WHERE (City and State)"
+          },
+          "field_type": "Text",
+          "field_type_code": 7,
+          "field_value": "",
+          "field_flags": 8392704,
+          "rect": {
+            "x0": 403.34,
+            "y0": 470.83,
+            "x1": 573.16,
+            "y1": 483.17,
+            "width": 169.83,
+            "height": 12.33
+          },
+          "text_format": 0,
+          "text_maxlen": 0,
+          "is_readonly": false,
+          "is_required": false,
+          "is_no_export": false,
+          "button_states": null,
+          "page": 1
+        },
+        {
+          "field_name_raw": "topmostSubform[0].BodyPage1[0].P1_Marr2PerfBy_CB1[0]",
+          "field_name": "marriage_performed_by_2",
+          "field_context_on_pdf": "MARRIAGE PERFORMED BY: Clergyman or Public Official",
+          "field_context_detected": "RIAGE PERFORMED BY: Clergyman or Public Official SPOUSE S",
+          "field_context_all_directions": {
+            "left": "MAR",
+            "right": "RIAGE PERFORMED BY: Clergyman or Public Official SPOUSE S",
+            "top": "pouse none EMAR",
+            "bottom": "OW M ARRI pouse none O WH OW M ARRI"
+          },
+          "field_type": "CheckBox",
+          "field_type_code": 2,
+          "field_value": "",
+          "field_flags": 0,
+          "rect": {
+            "x0": 64.57,
+            "y0": 500.03,
+            "x1": 74.57,
+            "y1": 510.03,
+            "width": 10.0,
+            "height": 10.0
+          },
+          "is_checked": false,
+          "is_readonly": false,
+          "is_required": false,
+          "is_no_export": false,
+          "button_states": {
+            "normal": [
+              "1"
+            ],
+            "down": [
+              "1",
+              "Off"
+            ]
+          },
+          "page": 1
+        },
+        {
+          "field_name_raw": "topmostSubform[0].BodyPage1[0].P1_Marr2PerfBy_CB2[0]",
+          "field_name": "other_explain_in_2",
+          "field_context_on_pdf": "Other (Explain in \"REMARKS\")",
+          "field_context_detected": "Clergyman or Public Official Other (Explain in \"REMARKS\")",
+          "field_context_all_directions": {
+            "right": "Clergyman or Public Official Other (Explain in \"REMARKS\")",
+            "top": "pouse none EMAR",
+            "bottom": "OW M ARRI pouse none O WH OW M ARRI"
+          },
+          "field_type": "CheckBox",
+          "field_type_code": 2,
+          "field_value": "",
+          "field_flags": 0,
+          "rect": {
+            "x0": 64.57,
+            "y0": 515.2,
+            "x1": 74.57,
+            "y1": 525.2,
+            "width": 10.0,
+            "height": 10.0
+          },
+          "is_checked": false,
+          "is_readonly": false,
+          "is_required": false,
+          "is_no_export": false,
+          "button_states": {
+            "normal": [
+              "2"
+            ],
+            "down": [
+              "2",
+              "Off"
+            ]
+          },
+          "page": 1
+        },
+        {
+          "field_name_raw": "topmostSubform[0].BodyPage1[0].P1_Marr2SpouseDOB_FLD[0]",
+          "field_name": "date_of_birth_2",
+          "field_context_on_pdf": "SPOUSE'S DATE OF BIRTH  (or age)",
+          "field_context_detected": "Clergyman or Public Official Other (Explain in \"REMARKS\")",
+          "field_context_all_directions": {
+            "left": "Clergyman or Public Official Other (Explain in \"REMARKS\")",
+            "right": "IS DECEASED",
+            "top": "m for information about any other previous",
+            "bottom": "WHEN (MM/DD/YYYY) SPOUSE'S DATE OF BIRTH (or age) PREVIOUS MARRIAGE #2 WHEN (MM/DD/YYYY) WHEN (MM/DD/YYYY) SPOUSE'S DATE OF BIRTH (or age)"
+          },
+          "field_type": "Text",
+          "field_type_code": 7,
+          "field_value": "",
+          "field_flags": 8388608,
+          "rect": {
+            "x0": 227.84,
+            "y0": 511.34,
+            "x1": 397.67,
+            "y1": 528.17,
+            "width": 169.83,
+            "height": 16.83
+          },
+          "text_format": 0,
+          "text_maxlen": 0,
+          "is_readonly": false,
+          "is_required": false,
+          "is_no_export": false,
+          "button_states": null,
+          "page": 1
+        },
+        {
+          "field_name_raw": "topmostSubform[0].BodyPage1[0].P1_Marr2SpouseDOD_FLD[0]",
+          "field_name": "give_date_of_2",
+          "field_context_on_pdf": "GIVE DATE OF DEATH IF SPOUSE IS DECEASED",
+          "field_context_detected": "l KS\")",
+          "field_context_all_directions": {
+            "left": "l KS\")",
+            "top": "us marriages, if necessary)",
+            "bottom": "WHERE (City and State) GIVE DATE OF DEATH IF SPOUSE IS DECEASED WHERE (City and State) WHERE (City and State) GIVE DATE OF DEATH IF SPOUSE IS DECEASED"
+          },
+          "field_type": "Text",
+          "field_type_code": 7,
+          "field_value": "",
+          "field_flags": 8388608,
+          "rect": {
+            "x0": 403.34,
+            "y0": 511.34,
+            "x1": 573.16,
+            "y1": 528.17,
+            "width": 169.83,
+            "height": 16.83
+          },
+          "text_format": 0,
+          "text_maxlen": 0,
+          "is_readonly": false,
+          "is_required": false,
+          "is_no_export": false,
+          "button_states": null,
+          "page": 1
+        },
+        {
+          "field_name_raw": "topmostSubform[0].BodyPage1[0].P1_Marr2SpouseSSN_FLD[0]",
+          "field_name": "ssn_5",
+          "field_context_on_pdf": "Spouse's Social Security Number  \r(If none or unknown, so indicate)",
+          "field_context_detected": "Spouse's Social Security Number (If none or unknown, so indicate)",
+          "field_context_all_directions": {
+            "left": "Spouse's Social Security Number (If none or unknown, so indicate)",
+            "top": "m for information about any other previous marriages, if necessary)",
+            "bottom": "SPOUSE'S DATE OF BIRTH (or age) GIVE DATE OF DEATH IF SPOUSE IS DECEASED PREVIOUS MARRIAGE #2 WHEN (MM/DD/YYYY) WHERE (City and State) WHEN (MM/DD/YYYY) WHERE (City and State) SPOUSE'S DATE OF BIRTH (or age) GIVE DATE OF DEATH IF SPOUSE IS DECEASED"
+          },
+          "field_type": "Text",
+          "field_type_code": 7,
+          "field_value": "",
+          "field_flags": 8392704,
+          "rect": {
+            "x0": 227.84,
+            "y0": 533.83,
+            "x1": 573.16,
+            "y1": 550.67,
+            "width": 345.33,
+            "height": 16.83
+          },
+          "text_format": 0,
+          "text_maxlen": 0,
+          "is_readonly": false,
+          "is_required": false,
+          "is_no_export": false,
+          "button_states": null,
+          "page": 1
+        },
+        {
+          "field_name_raw": "topmostSubform[0].BodyPage1[0].P1_Remarks_FLD[0]",
+          "field_name": "use_this_space",
+          "field_context_on_pdf": "REMARKS:  (Use this space of this form for information about any other previous marriages, if necessary) ",
+          "field_context_detected": "TO WHOM MARRIED WHEN (MM/DD/YYYY) WHERE (City and State) HOW MARRIAGE ENDED WHEN (MM/DD/YYYY) WHERE (City and State) MARRIAGE PERFORMED BY: Clergyman or Public Official Other (Explain in \"REMARKS\") SPOUSE'S DATE OF BIRTH (or age) GIVE DATE OF DEATH IF SPOUSE IS DECEASED Spouse's Social Security Number (If none or unknown, so indicate) REMARKS: (Use this space of this form for information about any other previous marriages, if necessary)",
+          "field_context_all_directions": {
+            "bottom": "Other (Explain in REMARKS ) Spouse's Social Security Number (If none or unknown, so indicate) PREVIOUS MARRIAGE #2 TO WHOM MARRIED WHEN (MM/DD/YYYY) WHERE (City and State) HOW MARRIAGE ENDED WHEN (MM/DD/YYYY) WHERE (City and State) MARRIAGE PERFORMED BY: Clergyman or Public Official Other (Explain in \"REMARKS\") SPOUSE'S DATE OF BIRTH (or age) GIVE DATE OF DEATH IF SPOUSE IS DECEASED Spouse's Social Security Number (If none or unknown, so indicate) REMARKS: (Use this space of this form for information about any other previous marriages, if necessary)"
+          },
+          "field_type": "Text",
+          "field_type_code": 7,
+          "field_value": "",
+          "field_flags": 8392704,
+          "rect": {
+            "x0": 47.83,
+            "y0": 574.34,
+            "x1": 573.16,
+            "y1": 766.67,
+            "width": 525.33,
+            "height": 192.33
+          },
+          "text_format": 0,
+          "text_maxlen": 0,
+          "is_readonly": false,
+          "is_required": false,
+          "is_no_export": false,
+          "button_states": null,
+          "page": 1
+        }
+      ]
+    },
+    {
+      "page_number": 2,
+      "fields": [
+        {
+          "field_name_raw": "topmostSubform[0].BodyPage2[0].P2_Signature_FLD[0]",
+          "field_name": "first_name",
+          "field_context_on_pdf": "Page 2 of 2 I declare under penalty of perjury that I have examined all the information on this form, and on any accompanying statements or forms, and it is true and correct to the best of my knowledge. I understand \rthat anyone who knowingly gives a false or misleading statement about a material fact in this information, \ror causes someone else to do so, commits a crime and may be sent to prison, or may face other penalties, \ror both. SIGNATURE OF WAGE EARNER OR SELF-EMPLOYED PERSON SIGNATURE  (First Name, Middle Initial, Last Name)  (Write in ink.) Complete the form, print, and sign",
+          "field_context_detected": "MAILING ADDRESS (Number and Street, Apt. No., P.O. Box, or Rural Route) CITY Witnesses are required ONLY if this statement has been signed by mark (X) abo witnesses to the signing who know the wage earner or self-employed person mu full addresses. 1. SIGNATURE OF WITNESS ADDRESS (Number and Street, City, State and ZIP Code) 2. SIGNATURE OF ADDRESS (Numbe",
+          "field_context_all_directions": {
+            "right": "TELEPHONE NUMBER (Area Code)",
+            "top": "MAILING ADDRESS (Number and Street, Apt. No., P.O. Box, or Rural Route) CITY Witnesses are required ONLY if this statement has been signed by mark (X) abo witnesses to the signing who know the wage earner or self-employed person mu full addresses. 1. SIGNATURE OF WITNESS ADDRESS (Number and Street, City, State and ZIP Code) 2. SIGNATURE OF ADDRESS (Numbe",
+            "bottom": "Form SSA-3 (08-2025) UF I declare under penalty of perjury that I have examined all the information o accompanying statements or forms, and it is true and correct to the best of that anyone who knowingly gives a false or misleading statement about a m or causes someone else to do so, commits a crime and may be sent to pris or both. SIGNATURE OF WAGE EARNER OR SELF-EMPLOYED PERSON SIGNATURE (First Name, Middle Initial, Last Name) (Write in ink.)"
+          },
+          "field_type": "Text",
+          "field_type_code": 7,
+          "field_value": "",
+          "field_flags": 8392705,
+          "rect": {
+            "x0": 47.84,
+            "y0": 124.34,
+            "x1": 397.66,
+            "y1": 154.66,
+            "width": 349.82,
+            "height": 30.33
+          },
+          "text_format": 0,
+          "text_maxlen": 0,
+          "is_readonly": true,
+          "is_required": false,
+          "is_no_export": false,
+          "button_states": null,
+          "page": 2
+        },
+        {
+          "field_name_raw": "topmostSubform[0].BodyPage2[0].P2_SignDate_FLD[0]",
+          "field_name": "date_mm_dd",
+          "field_context_on_pdf": "DATE  (MM/DD/Y Y Y Y)",
+          "field_context_detected": "Initial, Last Name) (Write in ink.)",
+          "field_context_all_directions": {
+            "left": "Initial, Last Name) (Write in ink.)",
+            "top": "TELEPHONE NUMBER (Area Code) STATE ZIP CODE ove. If signed by mark (X), two ust sign below, giving their F WITNESS er and Street, City, State and ZIP Code)",
+            "bottom": "Page 2 of 2 on this form, and on any of my knowledge. I understand material fact in this information, son, or may face other penalties, DATE (MM/DD/YYYY)"
+          },
+          "field_type": "Text",
+          "field_type_code": 7,
+          "field_value": "",
+          "field_flags": 8388608,
+          "rect": {
+            "x0": 403.34,
+            "y0": 110.84,
+            "x1": 573.16,
+            "y1": 123.17,
+            "width": 169.83,
+            "height": 12.33
+          },
+          "text_format": 0,
+          "text_maxlen": 0,
+          "is_readonly": false,
+          "is_required": false,
+          "is_no_export": false,
+          "button_states": null,
+          "page": 2
+        },
+        {
+          "field_name_raw": "topmostSubform[0].BodyPage2[0].P2_TelephoneNumber_FLD[0]",
+          "field_name": "phone_number",
+          "field_context_on_pdf": "TELEPHONE NUMBER  (Area Code)",
+          "field_context_detected": "STATE ZIP CODE ove. If signed by mark (X), two ust sign below, giving their F WITNESS er and Street, City, State and ZIP Code)",
+          "field_context_all_directions": {
+            "top": "STATE ZIP CODE ove. If signed by mark (X), two ust sign below, giving their F WITNESS er and Street, City, State and ZIP Code)",
+            "bottom": "Page 2 of 2 on this form, and on any of my knowledge. I understand material fact in this information, son, or may face other penalties, DATE (MM/DD/YYYY) TELEPHONE NUMBER (Area Code)"
+          },
+          "field_type": "Text",
+          "field_type_code": 7,
+          "field_value": "",
+          "field_flags": 8392704,
+          "rect": {
+            "x0": 403.34,
+            "y0": 142.34,
+            "x1": 573.16,
+            "y1": 154.66,
+            "width": 169.83,
+            "height": 12.33
+          },
+          "text_format": 0,
+          "text_maxlen": 0,
+          "is_readonly": false,
+          "is_required": false,
+          "is_no_export": false,
+          "button_states": null,
+          "page": 2
+        },
+        {
+          "field_name_raw": "topmostSubform[0].BodyPage2[0].P2_MailingAddress_FLD[0]",
+          "field_name": "mailing_address",
+          "field_context_on_pdf": "MAILING ADDRESS  (Number and Street, Apartment number, P O Box, or Rural Route)",
+          "field_context_detected": "CITY STATE ZIP CODE Witnesses are required ONLY if this statement has been signed by mark (X) above. If signed by mark (X), two witnesses to the signing who know the wage earner or self-employed person must sign below, giving their full addresses. 1. SIGNATURE OF WITNESS ADDRESS (Number and Street, City, State and ZIP Code) 2. SIGNATURE OF WITNESS ADDRESS (Number and Street, City, State and ZIP Code)",
+          "field_context_all_directions": {
+            "top": "CITY STATE ZIP CODE Witnesses are required ONLY if this statement has been signed by mark (X) above. If signed by mark (X), two witnesses to the signing who know the wage earner or self-employed person must sign below, giving their full addresses. 1. SIGNATURE OF WITNESS ADDRESS (Number and Street, City, State and ZIP Code) 2. SIGNATURE OF WITNESS ADDRESS (Number and Street, City, State and ZIP Code) Privacy Act Statement Collection and Use of Personal Information",
+            "bottom": "Form SSA-3 (08-2025) UF Page 2 of 2 I declare under penalty of perjury that I have examined all the information on this form, and on any accompanying statements or forms, and it is true and correct to the best of my knowledge. I understand that anyone who knowingly gives a false or misleading statement about a material fact in this information, or causes someone else to do so, commits a crime and may be sent to prison, or may face other penalties, or both. SIGNATURE OF WAGE EARNER OR SELF-EMPLOYED PERSON SIGNATURE (First Name, Middle Initial, Last Name) (Write in ink.) DATE (MM/DD/YYYY) TELEPHONE NUMBER (Area Code) MAILING ADDRESS (Number and Street, Apt. No., P.O. Box, or Rural Route)"
+          },
+          "field_type": "Text",
+          "field_type_code": 7,
+          "field_value": "",
+          "field_flags": 8392704,
+          "rect": {
+            "x0": 47.84,
+            "y0": 173.84,
+            "x1": 573.16,
+            "y1": 186.17,
+            "width": 525.33,
+            "height": 12.33
+          },
+          "text_format": 0,
+          "text_maxlen": 0,
+          "is_readonly": false,
+          "is_required": false,
+          "is_no_export": false,
+          "button_states": null,
+          "page": 2
+        },
+        {
+          "field_name_raw": "topmostSubform[0].BodyPage2[0].P2_City_FLD[0]",
+          "field_name": "city",
+          "field_context_on_pdf": "CITY",
+          "field_context_detected": "Witnesses are required ONLY if this statement has been signed by mark (X) abo witnesses to the signing who know the wage earner or self-employed person mu full addresses. 1. SIGNATURE OF WITNESS ADDRESS (Number and Street, City, State and ZIP Code) 2. SIGNATURE OF ADDRESS (Numbe Privacy Act Statement",
+          "field_context_all_directions": {
+            "top": "Witnesses are required ONLY if this statement has been signed by mark (X) abo witnesses to the signing who know the wage earner or self-employed person mu full addresses. 1. SIGNATURE OF WITNESS ADDRESS (Number and Street, City, State and ZIP Code) 2. SIGNATURE OF ADDRESS (Numbe Privacy Act Statement Collection and Use of Personal Informa Sections 202(b) and (c), 205(a), and 216(h)(1) of the Social Security Act, as ame information, which we will use to determine the identity of your spouse. Providing providing all or part of the information may prevent an accurate and timely decisio",
+            "bottom": "Form SSA-3 (08-2025) UF I declare under penalty of perjury that I have examined all the information o accompanying statements or forms, and it is true and correct to the best of that anyone who knowingly gives a false or misleading statement about a m or causes someone else to do so, commits a crime and may be sent to pris or both. SIGNATURE OF WAGE EARNER OR SELF-EMPLOYED PERSON SIGNATURE (First Name, Middle Initial, Last Name) (Write in ink.) MAILING ADDRESS (Number and Street, Apt. No., P.O. Box, or Rural Route) CITY"
+          },
+          "field_type": "Text",
+          "field_type_code": 7,
+          "field_value": "",
+          "field_flags": 8392704,
+          "rect": {
+            "x0": 47.84,
+            "y0": 205.34,
+            "x1": 397.66,
+            "y1": 217.66,
+            "width": 349.82,
+            "height": 12.33
+          },
+          "text_format": 0,
+          "text_maxlen": 0,
+          "is_readonly": false,
+          "is_required": false,
+          "is_no_export": false,
+          "button_states": null,
+          "page": 2
+        },
+        {
+          "field_name_raw": "topmostSubform[0].BodyPage2[0].P2_State_FLD[0]",
+          "field_name": "state_5",
+          "field_context_on_pdf": "STATE",
+          "field_context_detected": "ove. If signed by ust sign below, g F WITNESS er and Street, Ci",
+          "field_context_all_directions": {
+            "top": "ove. If signed by ust sign below, g F WITNESS er and Street, Ci ation ended, allow us t ng the information sion on your eligib",
+            "bottom": "on this form, an of my knowledg material fact in son, or may fac DATE (MM/DD TELEPHONE N STATE"
+          },
+          "field_type": "Text",
+          "field_type_code": 7,
+          "field_value": "",
+          "field_flags": 8392704,
+          "rect": {
+            "x0": 403.34,
+            "y0": 205.2,
+            "x1": 465.16,
+            "y1": 217.53,
+            "width": 61.83,
+            "height": 12.33
+          },
+          "text_format": 0,
+          "text_maxlen": 0,
+          "is_readonly": false,
+          "is_required": false,
+          "is_no_export": false,
+          "button_states": null,
+          "page": 2
+        },
+        {
+          "field_name_raw": "topmostSubform[0].BodyPage2[0].P2_ZIPCode_FLD[0]",
+          "field_name": "zip_code",
+          "field_context_on_pdf": "ZIP CODE",
+          "field_context_detected": "y mark (X), two giving their City, State and ZIP Code)",
+          "field_context_all_directions": {
+            "top": "y mark (X), two giving their City, State and ZIP Code) s to collect your on is voluntary, but not gibility for spousal",
+            "bottom": "Page 2 of 2 and on any ge. I understand n this information, ace other penalties, D/YYYY) NUMBER (Area Code) ZIP CODE"
+          },
+          "field_type": "Text",
+          "field_type_code": 7,
+          "field_value": "",
+          "field_flags": 8392704,
+          "rect": {
+            "x0": 470.84,
+            "y0": 205.34,
+            "x1": 573.16,
+            "y1": 217.66,
+            "width": 102.33,
+            "height": 12.33
+          },
+          "text_format": 0,
+          "text_maxlen": 0,
+          "is_readonly": false,
+          "is_required": false,
+          "is_no_export": false,
+          "button_states": null,
+          "page": 2
+        },
+        {
+          "field_name_raw": "topmostSubform[0].BodyPage2[0].P2_SignatureofWitness1_FLD[0]",
+          "field_name": "state_6",
+          "field_context_on_pdf": "Witnesses are required ONLY if this statement has been signed by mark (X) above. If signed by mark (X), two \rwitnesses to the signing who know the wage earner or self-employed person must sign below, giving their \rfull addresses. 1.  SIGNATURE OF WITNESS Requires wet signature. Complete the form, Print, and sign",
+          "field_context_detected": "ADDRESS (Number and Street, City, State and ZIP Code) Privacy Act Collection and Use of Sections 202(b) and (c), 205(a), and 216(h)(1) of the Social S information, which we will use to determine the identity of yo providing all or part of the information may prevent an accura benefits. As law permits, we may use and share the informa",
+          "field_context_all_directions": {
+            "top": "ADDRESS (Number and Street, City, State and ZIP Code) Privacy Act Collection and Use of Sections 202(b) and (c), 205(a), and 216(h)(1) of the Social S information, which we will use to determine the identity of yo providing all or part of the information may prevent an accura benefits. As law permits, we may use and share the informa contractors, and others, as outlined in the routine uses within 60-0320, available at www.ssa.gov/privacy. The information programs for Federal benefits eligibility and to recoup debts",
+            "bottom": "y g y g g or causes someone else to do so, commits a crime and or both. SIGNATURE OF WAGE EARNER OR SELF-EMPLOYED P SIGNATURE (First Name, Middle Initial, Last Name) (Write MAILING ADDRESS (Number and Street, Apt. No., P.O. Bo CITY Witnesses are required ONLY if this statement has been sig witnesses to the signing who know the wage earner or self-e full addresses. 1. SIGNATURE OF WITNESS"
+          },
+          "field_type": "Text",
+          "field_type_code": 7,
+          "field_value": "",
+          "field_flags": 8392705,
+          "rect": {
+            "x0": 47.84,
+            "y0": 272.84,
+            "x1": 307.66,
+            "y1": 285.17,
+            "width": 259.82,
+            "height": 12.33
+          },
+          "text_format": 0,
+          "text_maxlen": 0,
+          "is_readonly": true,
+          "is_required": false,
+          "is_no_export": false,
+          "button_states": null,
+          "page": 2
+        },
+        {
+          "field_name_raw": "topmostSubform[0].BodyPage2[0].P2_AddressWitness1_FLD[0]",
+          "field_name": "zip_code_2",
+          "field_context_on_pdf": "ADDRESS  (Number and Street, City, State and ZIP Code)",
+          "field_context_detected": "Privacy Act Collection and Use of Sections 202(b) and (c), 205(a), and 216(h)(1) of the Social S information, which we will use to determine the identity of yo providing all or part of the information may prevent an accura benefits. As law permits, we may use and share the informa contractors, and others, as outlined in the routine uses within 60-0320, available at www.ssa.gov/privacy. The information programs for Federal benefits eligibility and to recoup debts Paperwork Reducti",
+          "field_context_all_directions": {
+            "right": ") ( , y, S",
+            "top": "Privacy Act Collection and Use of Sections 202(b) and (c), 205(a), and 216(h)(1) of the Social S information, which we will use to determine the identity of yo providing all or part of the information may prevent an accura benefits. As law permits, we may use and share the informa contractors, and others, as outlined in the routine uses within 60-0320, available at www.ssa.gov/privacy. The information programs for Federal benefits eligibility and to recoup debts Paperwork Reducti This information collection meets the requirements of 44 U.S Reduction Act of 1995. You do not need to answer these que and Budget control number. We estimate that it will take abo th ti SEND OR BRING THE COMPLETED",
+            "bottom": "SIGNATURE OF WAGE EARNER OR SELF EMPLOYED P SIGNATURE (First Name, Middle Initial, Last Name) (Write MAILING ADDRESS (Number and Street, Apt. No., P.O. Bo CITY Witnesses are required ONLY if this statement has been sig witnesses to the signing who know the wage earner or self-e full addresses. 1. SIGNATURE OF WITNESS ADDRESS (Number and Street, City, State and ZIP Code)"
+          },
+          "field_type": "Text",
+          "field_type_code": 7,
+          "field_value": "",
+          "field_flags": 8392704,
+          "rect": {
+            "x0": 47.84,
+            "y0": 304.34,
+            "x1": 307.66,
+            "y1": 352.67,
+            "width": 259.82,
+            "height": 48.33
+          },
+          "text_format": 0,
+          "text_maxlen": 0,
+          "is_readonly": false,
+          "is_required": false,
+          "is_no_export": false,
+          "button_states": null,
+          "page": 2
+        },
+        {
+          "field_name_raw": "topmostSubform[0].BodyPage2[0].P2_SignatureofWitness2_FLD[0]",
+          "field_name": "signature",
+          "field_context_on_pdf": "2.  SIGNATURE OF WITNESS Requires wet signature. Print out and sign form. ",
+          "field_context_detected": ") ADDRESS (Number and Street, City, State and ZIP Code) t Statement f Personal Information Security Act, as amended, allow us to collect your our spouse. Providing the information is voluntary, but not rate and timely decision on your eligibility for spousal ation you submit, including with other Federal agencies,",
+          "field_context_all_directions": {
+            "top": ") ADDRESS (Number and Street, City, State and ZIP Code) t Statement f Personal Information Security Act, as amended, allow us to collect your our spouse. Providing the information is voluntary, but not rate and timely decision on your eligibility for spousal ation you submit, including with other Federal agencies, in System of Records Notices 60-0089, 60-0090, and n you submit may also be used in computer matching s under these programs.",
+            "bottom": ", d may be sent to prison, or may face other penalties, PERSON te in ink.) DATE (MM/DD/YYYY) TELEPHONE NUMBER (Area Code) Box, or Rural Route) STATE ZIP CODE gned by mark (X) above. If signed by mark (X), two -employed person must sign below, giving their 2. SIGNATURE OF WITNESS"
+          },
+          "field_type": "Text",
+          "field_type_code": 7,
+          "field_value": "",
+          "field_flags": 8392705,
+          "rect": {
+            "x0": 313.34,
+            "y0": 272.84,
+            "x1": 573.16,
+            "y1": 285.17,
+            "width": 259.83,
+            "height": 12.33
+          },
+          "text_format": 0,
+          "text_maxlen": 0,
+          "is_readonly": true,
+          "is_required": false,
+          "is_no_export": false,
+          "button_states": null,
+          "page": 2
+        },
+        {
+          "field_name_raw": "topmostSubform[0].BodyPage2[0].P2_AddressWitness2_FLD[0]",
+          "field_name": "zip_code_3",
+          "field_context_on_pdf": "ADDRESS  (Number and Street, City, State and ZIP Code)",
+          "field_context_detected": ", y, ) P i A",
+          "field_context_all_directions": {
+            "left": ", y, ) P i A",
+            "right": ")",
+            "top": "t Statement f Personal Information Security Act, as amended, allow us to collect your our spouse. Providing the information is voluntary, but not rate and timely decision on your eligibility for spousal ation you submit, including with other Federal agencies, in System of Records Notices 60-0089, 60-0090, and n you submit may also be used in computer matching s under these programs. tion Act Statement S.C. § 3507, as amended by section 2 of the Paperwork uestions unless we display a valid Office of Management out 60 minutes to read the instructions, gather the facts, and D FORM TO YOUR LOCAL SOCIAL SECURITY OFFICE",
+            "bottom": "PERSON te in ink.) DATE (MM/DD/YYYY) TELEPHONE NUMBER (Area Code) Box, or Rural Route) STATE ZIP CODE gned by mark (X) above. If signed by mark (X), two -employed person must sign below, giving their ) 2. SIGNATURE OF WITNESS ADDRESS (Number and Street, City, State and ZIP Code)"
+          },
+          "field_type": "Text",
+          "field_type_code": 7,
+          "field_value": "",
+          "field_flags": 8392704,
+          "rect": {
+            "x0": 313.34,
+            "y0": 304.34,
+            "x1": 573.16,
+            "y1": 352.67,
+            "width": 259.83,
+            "height": 48.33
+          },
+          "text_format": 0,
+          "text_maxlen": 0,
+          "is_readonly": false,
+          "is_required": false,
+          "is_no_export": false,
+          "button_states": null,
+          "page": 2
+        },
+        {
+          "field_name_raw": "topmostSubform[0].BodyPage2[0].P2_PAReadOnly_FLD[0]",
+          "field_name": "ssn_6",
+          "field_context_on_pdf": "Privacy Act Statement\rCollection and Use of Personal Information Sections 202(b) and (c), 205(ay), and 216(h)(1) of the Social Security Act, as amended, allow us to collect your information, which we will use to determine the identity of your spouse.  Providing the information is voluntary, but not providing all or part of the information may prevent an accurate and timely decision on your eligibility for spousal benefits.  As law permits, we may use and share the information you submit, including with other Federal agencies, contractors, and others, as outlined in the routine uses within System of Records Notices 60-0089, 60-0090, and 60-0320, available at www.s s ay.g o v/privacy. The information you submit may also be used in computer matching programs for Federal benefits eligibility and to recoup debts under these programs.",
+          "field_context_detected": "ement onal Information A d d ll ll",
+          "field_context_all_directions": {
+            "left": "ement onal Information A d d ll ll",
+            "top": "but n al cies d g work men acts FFI re a",
+            "bottom": "IP C"
+          },
+          "field_type": "Text",
+          "field_type_code": 7,
+          "field_value": "",
+          "field_flags": 8392705,
+          "rect": {
+            "x0": 542.58,
+            "y0": 367.34,
+            "x1": 547.33,
+            "y1": 384.17,
+            "width": 4.75,
+            "height": 16.83
+          },
+          "text_format": 0,
+          "text_maxlen": 0,
+          "is_readonly": true,
+          "is_required": false,
+          "is_no_export": false,
+          "button_states": null,
+          "page": 2
+        },
+        {
+          "field_name_raw": "topmostSubform[0].BodyPage2[0].P2_PRAReadOnly_FLD[0]",
+          "field_name": "ssn_7",
+          "field_context_on_pdf": "Paperwork Reduction Act Statement This information collection meets the requirements of 44 U.S.C. § 3507, as amended by section 2 of the Paperwork Reduction Act of 1995. You do not need to answer these questions unless we display a valid Office of Management and Budget control number. We estimate that it will take about 60 minutes to read the instructions, gather the facts, and answer the questions. SEND OR BRING THE COMPLETED FORM TO YOUR LOCAL SOCIAL SECURITY OFFICE. You can find your local Social Security office through SSA's website at www.socialsecurity.g o v. Offices are also listed under U. S. Government agencies in your telephone directory or you may call Social Security at 1-800-772-1213 (TTY 1-800-325-0778). You may send comments regarding this burden estimate or any other aspect of this collection, including suggestions for reducing this burden to: SSA, 6401 Security Blvd, Baltimore, MD 21235-6401. Send only comments relating to our time estimate to this address, not the completed form. ",
+          "field_context_detected": "t Statement 3507, as amended by section 2 of the Paperwo",
+          "field_context_all_directions": {
+            "left": "t Statement 3507, as amended by section 2 of the Paperwo",
+            "right": "ork",
+            "top": "work men acts FFI re a asp",
+            "bottom": "IP C but al cies d g"
+          },
+          "field_type": "Text",
+          "field_type_code": 7,
+          "field_value": "",
+          "field_flags": 1,
+          "rect": {
+            "x0": 542.84,
+            "y0": 497.84,
+            "x1": 546.16,
+            "y1": 517.68,
+            "width": 3.33,
+            "height": 19.84
+          },
+          "text_format": 0,
+          "text_maxlen": 0,
+          "is_readonly": true,
+          "is_required": false,
+          "is_no_export": false,
+          "button_states": null,
+          "page": 2
+        },
+        {
+          "field_name_raw": "topmostSubform[0].BodyPage2[0].P2_EOF_FLD[0]",
+          "field_name": "you_have_reached",
+          "field_context_on_pdf": "You have reached the end of the form. If you tab, you will be at the beginning of the form.",
+          "field_context_detected": "are er as m.",
+          "field_context_all_directions": {
+            "bottom": "erwo em fac OF are er as m."
+          },
+          "field_type": "Text",
+          "field_type_code": 7,
+          "field_value": "",
+          "field_flags": 1,
+          "rect": {
+            "x0": 533.84,
+            "y0": 709.34,
+            "x1": 537.16,
+            "y1": 729.18,
+            "width": 3.33,
+            "height": 19.84
+          },
+          "text_format": 0,
+          "text_maxlen": 0,
+          "is_readonly": true,
+          "is_required": false,
+          "is_no_export": false,
+          "button_states": null,
+          "page": 2
+        }
+      ]
+    }
+  ]
+}
